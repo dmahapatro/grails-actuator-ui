@@ -1,0 +1,12 @@
+### Gradle template
+.gradle
+build/
+/actuator-ui.iml
+/*.iml
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+/.idea
+!gradle-wrapper.jar
