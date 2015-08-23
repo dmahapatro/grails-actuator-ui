@@ -8,8 +8,8 @@ class ActuatorDashboardService {
         if(!metrics) return [:]
 
         // Uptime
-        if(metrics.uptime) {
-            Period uptimePeriod = new Period(metrics.uptime as Long)
+        if(metrics["instance.uptime"]) {
+            Period uptimePeriod = new Period(metrics["instance.uptime"] as Long)
             if (uptimePeriod) {
                 metrics.uptimeHours = uptimePeriod.hours
                 metrics.uptimeMinutes = uptimePeriod.minutes

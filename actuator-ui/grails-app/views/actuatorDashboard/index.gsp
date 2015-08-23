@@ -2,42 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="" charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="layout" content="actuator" charset="utf-8">
     <title>${info.app.name?.capitalize()} | Admin</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
-    %{--<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">--}%
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <asset:stylesheet src="actuator-ui/AdminLTE.css"></asset:stylesheet>
-    <!-- Theme style -->
-    %{--<link rel="stylesheet" href="dist/css/AdminLTE.min.css">--}%
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    %{--<link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">--}%
-    <!-- iCheck -->
-    %{--<link rel="stylesheet" href="plugins/iCheck/flat/blue.css">--}%
-    <!-- Morris chart -->
-    %{--<link rel="stylesheet" href="plugins/morris/morris.css">--}%
-    <!-- jvectormap -->
-    %{--<link rel="stylesheet" href="plugins/jvectormap/jquery-jvectormap-1.2.2.css">--}%
-    <!-- Date Picker -->
-    %{--<link rel="stylesheet" href="plugins/datepicker/datepicker3.css">--}%
-    <!-- Daterange picker -->
-    %{--<link rel="stylesheet" href="plugins/daterangepicker/daterangepicker-bs3.css">--}%
-    <!-- bootstrap wysihtml5 - text editor -->
-    %{--<link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">--}%
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="http://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="http://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -147,7 +113,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li class="active"><g:link action="index"><i class="fa fa-circle-o"></i> Main Info</g:link></li>
-                        %{--<li><g:link action="traceability"><i class="fa fa-circle-o"></i> Traceability <span class="label label-primary pull-right">${trace.size()}</span></g:link></li>--}%
+                        <li><g:link action="traceability"><i class="fa fa-circle-o"></i> Traceability <span class="label label-primary pull-right">${traceMap.trace.size()}</span></g:link></li>
                     </ul>
                 </li>
             </ul>
@@ -184,7 +150,9 @@
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer">
+                            More info <i class="fa fa-arrow-circle-right"></i>
+                        </a>
                     </div>
                 </div><!-- ./col -->
                 <div class="col-lg-3 col-xs-6">
@@ -523,7 +491,7 @@
 
                 </section>--}%<!-- /.Left col -->
                 <div class="col-xs-12">
-                    <div class="box">
+                    <div class="box box-success">
                         <div class="box-header">
                             <h3 class="box-title">HTTP Call Trace</h3>
                             <div class="box-tools">
@@ -538,12 +506,12 @@
                         <div class="box-body table-responsive no-padding">
                             <table class="table table-hover">
                                 <tbody><tr>
-                                    <th>Sl#</th>
+                                    <th>#</th>
                                     <th>Method</th>
                                     <th>Path</th>
                                     <th>Date</th>
                                     <th>Time</th>
-                                    <th>Response Status</th>
+                                    <th>Status</th>
                                     <th>Content Type</th>
                                 </tr>
                                 <g:each var="traceItem" in="${traceMap.trace}" status="id">
@@ -923,58 +891,5 @@
     <div class="control-sidebar-bg"></div>
 </div><!-- ./wrapper -->
 
-<!-- jQuery 2.1.4 -->
-%{--<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>--}%
-<!-- jQuery UI 1.11.4 -->
-<asset:javascript src="actuator-ui/plugins/ckeditor/ckeditor.js"></asset:javascript>
-<asset:javascript src="actuator-ui/plugins/jQuery/jQuery-2.1.4.min.js"></asset:javascript>
-<asset:javascript src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></asset:javascript>
-<asset:javascript src="actuator-ui/app.js"></asset:javascript>
-
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<asset:script>
-    $(function () {
-        $.widget.bridge('uibutton', $.ui.button);
-
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
-        });
-      });
-</asset:script>
-<!-- Bootstrap 3.3.5 -->
-%{--<script src="bootstrap/js/bootstrap.min.js"></script>--}%
-<!-- Morris.js charts -->
-<asset:javascript src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></asset:javascript>
-%{--<script src="plugins/morris/morris.min.js"></script>--}%
-<!-- Sparkline -->
-%{--<script src="plugins/sparkline/jquery.sparkline.min.js"></script>--}%
-<!-- jvectormap -->
-%{--<script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>--}%
-%{--<script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>--}%
-<!-- jQuery Knob Chart -->
-%{--<script src="plugins/knob/jquery.knob.js"></script>--}%
-<!-- daterangepicker -->
-<asset:javascript src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></asset:javascript>
-%{--<script src="plugins/daterangepicker/daterangepicker.js"></script>--}%
-<!-- datepicker -->
-%{--<script src="plugins/datepicker/bootstrap-datepicker.js"></script>--}%
-<!-- Bootstrap WYSIHTML5 -->
-%{--<script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>--}%
-<!-- Slimscroll -->
-%{--<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>--}%
-<!-- FastClick -->
-%{--<script src="plugins/fastclick/fastclick.min.js"></script>--}%
-<!-- AdminLTE App -->
-%{--<script src="dist/js/app.min.js"></script>--}%
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-%{--<script src="dist/js/pages/dashboard.js"></script>--}%
-<!-- AdminLTE for demo purposes -->
-%{--<script src="dist/js/demo.js"></script>--}%
 </body>
 </html>
