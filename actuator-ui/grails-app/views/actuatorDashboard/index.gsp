@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta name="layout" content="" charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>${info.app.name?.capitalize()} | Admin</title>
     <!-- Tell the browser to be responsive to screen width -->
@@ -44,12 +44,12 @@
 <div class="wrapper">
     <header class="main-header">
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <g:link action="index" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b></span>
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><b>Admin</b></span>
-        </a>
+        </g:link>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
             <!-- Sidebar toggle button-->
@@ -60,219 +60,16 @@
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <!-- Messages: style can be found in dropdown.less-->
-                    <li class="dropdown messages-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-envelope-o"></i>
-                            <span class="label label-success">4</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 4 messages</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    <li><!-- start message -->
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <asset:image src="actuator-ui/user2-160x160.jpg" class="img-circle"
-                                                     alt="User Image"/>
-                                            </div>
-                                            <h4>
-                                                Support Team
-                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                            </h4>
 
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li><!-- end message -->
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <asset:image src="actuator-ui/user3-128x128.jpg" class="img-circle"
-                                                     alt="User Image"/>
-                                            </div>
-                                            <h4>
-                                                AdminLTE Design Team
-                                                <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                                            </h4>
-
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <asset:image src="actuator-ui/user4-128x128.jpg" class="img-circle"
-                                                     alt="User Image"/>
-                                            </div>
-                                            <h4>
-                                                Developers
-                                                <small><i class="fa fa-clock-o"></i> Today</small>
-                                            </h4>
-
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <asset:image src="actuator-ui/user3-128x128.jpg" class="img-circle"
-                                                     alt="User Image"/>
-                                            </div>
-                                            <h4>
-                                                Sales Department
-                                                <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                                            </h4>
-
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <asset:image src="actuator-ui/user4-128x128.jpg" class="img-circle"
-                                                     alt="User Image"/>
-                                            </div>
-                                            <h4>
-                                                Reviewers
-                                                <small><i class="fa fa-clock-o"></i> 2 days</small>
-                                            </h4>
-
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="footer"><a href="#">See All Messages</a></li>
-                        </ul>
-                    </li>
                     <!-- Notifications: style can be found in dropdown.less -->
-                    <li class="dropdown notifications-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">10</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 10 notifications</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the page and may cause design problems
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-users text-red"></i> 5 new members joined
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-user text-red"></i> You changed your username
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="footer"><a href="#">View all</a></li>
-                        </ul>
-                    </li>
+
                     <!-- Tasks: style can be found in dropdown.less -->
-                    <li class="dropdown tasks-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-flag-o"></i>
-                            <span class="label label-danger">9</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 9 tasks</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Design some buttons
-                                                <small class="pull-right">20%</small>
-                                            </h3>
 
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-aqua" style="width: 20%"
-                                                     role="progressbar" aria-valuenow="20" aria-valuemin="0"
-                                                     aria-valuemax="100">
-                                                    <span class="sr-only">20% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li><!-- end task item -->
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Create a nice theme
-                                                <small class="pull-right">40%</small>
-                                            </h3>
-
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-green" style="width: 40%"
-                                                     role="progressbar" aria-valuenow="20" aria-valuemin="0"
-                                                     aria-valuemax="100">
-                                                    <span class="sr-only">40% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li><!-- end task item -->
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Some task I need to do
-                                                <small class="pull-right">60%</small>
-                                            </h3>
-
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-red" style="width: 60%"
-                                                     role="progressbar" aria-valuenow="20" aria-valuemin="0"
-                                                     aria-valuemax="100">
-                                                    <span class="sr-only">60% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li><!-- end task item -->
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Make beautiful transitions
-                                                <small class="pull-right">80%</small>
-                                            </h3>
-
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-yellow" style="width: 80%"
-                                                     role="progressbar" aria-valuenow="20" aria-valuemin="0"
-                                                     aria-valuemax="100">
-                                                    <span class="sr-only">80% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li><!-- end task item -->
-                                </ul>
-                            </li>
-                            <li class="footer">
-                                <a href="#">View all tasks</a>
-                            </li>
-                        </ul>
-                    </li>
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <asset:image src="actuator-ui/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                            <span class="hidden-xs">Alexander Pierce</span>
+                            <span class="hidden-xs">Dhiraj Mahapatro</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
@@ -280,12 +77,12 @@
                                 <asset:image src="actuator-ui/user2-160x160.jpg" class="img-circle" alt="User Image"/>
 
                                 <p>
-                                    Alexander Pierce - Web Developer
-                                    <small>Member since Nov. 2012</small>
+                                    Dhiraj Mahapatro - Web Developer
+                                    <small>Member since Mar. 2012</small>
                                 </p>
                             </li>
                             <!-- Menu Body -->
-                            <li class="user-body">
+                            %{--<li class="user-body">
                                 <div class="col-xs-4 text-center">
                                     <a href="#">Followers</a>
                                 </div>
@@ -297,13 +94,9 @@
                                 <div class="col-xs-4 text-center">
                                     <a href="#">Friends</a>
                                 </div>
-                            </li>
+                            </li>--}%
                             <!-- Menu Footer-->
                             <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                </div>
-
                                 <div class="pull-right">
                                     <a href="#" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
@@ -329,7 +122,7 @@
                 </div>
 
                 <div class="pull-left info">
-                    <p>Alexander Pierce</p>
+                    <p>Dhiraj Mahapatro</p>
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
@@ -353,138 +146,10 @@
                             class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                        <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                        <li class="active"><g:link action="index"><i class="fa fa-circle-o"></i> Main Info</g:link></li>
+                        %{--<li><g:link action="traceability"><i class="fa fa-circle-o"></i> Traceability <span class="label label-primary pull-right">${trace.size()}</span></g:link></li>--}%
                     </ul>
                 </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-files-o"></i>
-                        <span>Layout Options</span>
-                        <span class="label label-primary pull-right">4</span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-                        <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-                        <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                        <li><a href="pages/layout/collapsed-sidebar.html"><i
-                                class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="pages/widgets.html">
-                        <i class="fa fa-th"></i> <span>Widgets</span> <small
-                            class="label pull-right bg-green">new</small>
-                    </a>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-pie-chart"></i>
-                        <span>Charts</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-                        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-                        <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-                        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-laptop"></i>
-                        <span>UI Elements</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-                        <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-                        <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-                        <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-                        <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-                        <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-edit"></i> <span>Forms</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-                        <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a>
-                        </li>
-                        <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-table"></i> <span>Tables</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-                        <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="pages/calendar.html">
-                        <i class="fa fa-calendar"></i> <span>Calendar</span>
-                        <small class="label pull-right bg-red">3</small>
-                    </a>
-                </li>
-                <li>
-                    <a href="pages/mailbox/mailbox.html">
-                        <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                        <small class="label pull-right bg-yellow">12</small>
-                    </a>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-folder"></i> <span>Examples</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
-                        <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-                        <li><a href="pages/examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
-                        <li><a href="pages/examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
-                        <li><a href="pages/examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
-                        <li><a href="pages/examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
-                        <li><a href="pages/examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
-                        <li><a href="pages/examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-share"></i> <span>Multilevel</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-                        <li>
-                            <a href="#"><i class="fa fa-circle-o"></i> Level One <i
-                                    class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                                <li>
-                                    <a href="#"><i class="fa fa-circle-o"></i> Level Two <i
-                                            class="fa fa-angle-left pull-right"></i></a>
-                                    <ul class="treeview-menu">
-                                        <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-                    </ul>
-                </li>
-                <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-                <li class="header">LABELS</li>
-                <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
             </ul>
         </section>
         <!-- /.sidebar -->
@@ -524,45 +189,49 @@
                 </div><!-- ./col -->
                 <div class="col-lg-3 col-xs-6">
                     <!-- small box -->
-                    <div class="small-box bg-green">
-                        <div class="inner">
-                            <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                            <p>Bounce Rate</p>
-                        </div>
-
-                        <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div><!-- ./col -->
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3>
+                                ${metrics.uptimeHours}<sup style="font-size: 20px">hrs</sup>
+                                ${metrics.uptimeMinutes}<sup style="font-size: 20px">min</sup>
+                                ${metrics.uptimeSeconds}<sup style="font-size: 20px">sec</sup>
+                            </h3>
 
-                            <p>User Registrations</p>
+                            <p>System Uptime</p>
                         </div>
 
                         <div class="icon">
-                            <i class="ion ion-person-add"></i>
+                            <i class="ion ion-ios-pulse-strong"></i>
                         </div>
                         <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div><!-- ./col -->
                 <div class="col-lg-3 col-xs-6">
                     <!-- small box -->
-                    <div class="small-box bg-red">
+                    <div class="small-box bg-teal">
                         <div class="inner">
-                            <h3>65</h3>
+                            <h3>${metrics.threads}</h3>
 
-                            <p>Unique Visitors</p>
+                            <p>Threads</p>
                         </div>
 
                         <div class="icon">
-                            <i class="ion ion-pie-graph"></i>
+                            <i class="ion ion-network"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div><!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-${metrics.freeMemPercent < 30 ? 'red' :  metrics.freeMemPercent < 60 ? 'orange' : 'green'}">
+                        <div class="inner">
+                            <h3>${metrics.freeMemPercent}<sup style="font-size: 20px">%</sup></h3>
+
+                            <p>Free Memory</p>
+                        </div>
+
+                        <div class="icon">
+                            <i class="fa fa-battery-${metrics.freeMemPercent < 30 ? 'quarter' : metrics.freeMemPercent < 60 ? 'half' : metrics.freeMemPercent < 80 ? 'three-quarters' : 'full'}"></i>
                         </div>
                         <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
@@ -571,9 +240,36 @@
         <!-- Main row -->
             <div class="row">
                 <!-- Left col -->
-                <section class="col-lg-7 connectedSortable">
+                %{--<section class="col-lg-7 connectedSortable">
+                    <div class="box box-solid box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Heap Index</h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body text-center">
+                            <div class="progress vertical">
+                                <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="height: 53%;">
+                                    <span class="sr-only">40%</span>
+                                </div>
+                            </div>
+                            <div class="progress vertical">
+                                <div class="progress-bar progress-bar-aqua" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="height: 20%">
+                                    <span class="sr-only">20%</span>
+                                </div>
+                            </div>
+                            <div class="progress vertical">
+                                <div class="progress-bar progress-bar-yellow" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 60%">
+                                    <span class="sr-only">60%</span>
+                                </div>
+                            </div>
+                            <div class="progress vertical">
+                                <div class="progress-bar progress-bar-red" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="height: 80%">
+                                    <span class="sr-only">80%</span>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div>
                     <!-- Custom tabs (Charts with tabs)-->
-                    <div class="nav-tabs-custom">
+                    --}%%{--<div class="nav-tabs-custom">
                         <!-- Tabs within a box -->
                         <ul class="nav nav-tabs pull-right">
                             <li class="active"><a href="#revenue-chart" data-toggle="tab">Area</a></li>
@@ -589,10 +285,10 @@
                             <div class="chart tab-pane" id="sales-chart"
                                  style="position: relative; height: 300px;"></div>
                         </div>
-                    </div><!-- /.nav-tabs-custom -->
+                    </div>--}%%{--<!-- /.nav-tabs-custom -->
 
                 <!-- Chat box -->
-                    <div class="box box-success">
+                    --}%%{--<div class="box box-success">
                         <div class="box-header">
                             <i class="fa fa-comments-o"></i>
 
@@ -673,10 +369,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div><!-- /.box (chat box) -->
+                    </div>--}%%{--<!-- /.box (chat box) -->
 
                 <!-- TO DO List -->
-                    <div class="box box-primary">
+                    --}%%{--<div class="box box-primary">
                         <div class="box-header">
                             <i class="ion ion-clipboard"></i>
 
@@ -787,10 +483,10 @@
                         <div class="box-footer clearfix no-border">
                             <button class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
                         </div>
-                    </div><!-- /.box -->
+                    </div>--}%%{--<!-- /.box -->
 
                 <!-- quick email widget -->
-                    <div class="box box-info">
+                    --}%%{--<div class="box box-info">
                         <div class="box-header">
                             <i class="fa fa-envelope"></i>
 
@@ -823,11 +519,53 @@
                             <button class="pull-right btn btn-default" id="sendEmail">Send <i
                                     class="fa fa-arrow-circle-right"></i></button>
                         </div>
-                    </div>
+                    </div>--}%%{--
 
-                </section><!-- /.Left col -->
+                </section>--}%<!-- /.Left col -->
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">HTTP Call Trace</h3>
+                            <div class="box-tools">
+                                <div class="input-group" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-header -->
+                        <div class="box-body table-responsive no-padding">
+                            <table class="table table-hover">
+                                <tbody><tr>
+                                    <th>Sl#</th>
+                                    <th>Method</th>
+                                    <th>Path</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Response Status</th>
+                                    <th>Content Type</th>
+                                </tr>
+                                <g:each var="traceItem" in="${traceMap.trace}" status="id">
+                                    <tr>
+                                        <td>${id+1}</td>
+                                        <td><code>${traceItem.info.method}</code></td>
+                                        <td>${traceItem.info.path}</td>
+                                        <td>${new Date(traceItem.timestamp as Long).format('yyyy-MM-dd')}</td>
+                                        <td>${new Date(traceItem.timestamp as Long).format('HH:mm')}</td>
+                                        <td>
+                                            <label class="label label-${traceItem.info.headers.response.status.startsWith('2') ? 'success' : 'danger'}">
+                                            ${traceItem.info.headers.response.status}</label>
+                                        </td>
+                                        <td><code>${traceItem.info.headers.response."Content-Type"}</code></td>
+                                    </tr>
+                                </g:each>
+                                </tbody></table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div>
             <!-- right col (We are only adding the ID to make the widgets sortable)-->
-                <section class="col-lg-5 connectedSortable">
+                %{--<section class="col-lg-5 connectedSortable">
 
                     <!-- Map box -->
                     <div class="box box-solid bg-light-blue-gradient">
@@ -989,7 +727,7 @@
                         </div>
                     </div><!-- /.box -->
 
-                </section><!-- right col -->
+                </section>--}%<!-- right col -->
             </div><!-- /.row (main row) -->
 
         </section><!-- /.content -->
