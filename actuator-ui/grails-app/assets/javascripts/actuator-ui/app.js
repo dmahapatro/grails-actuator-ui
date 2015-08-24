@@ -1,9 +1,14 @@
-//= require /plugins/jQuery
-//= require /bootstrap/js/bootstrap.js
+//= require plugins/ckeditor/ckeditor.js
+//= require plugins/jQuery/jQuery-2.1.4.min.js
+//= require plugins/jQueryUI/jQuery-ui.min.js
+//= require bootstrap/js/bootstrap.js
 //= require plugins/datatables/jquery.dataTables.js
 //= require plugins/flot/jquery.flot.js
 //= require plugins/input-mask/jquery.inputmask.js
 //= require plugins/select2/select2.full.js
+//= require plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.all.min.js
+//= require plugins/chartjs/Chart.min.js
+//= require pages/dashboard.js
 //= require_tree .
 
 /*! AdminLTE app.js

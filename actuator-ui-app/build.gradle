@@ -40,6 +40,7 @@ assets {
 repositories {
     mavenLocal()
     maven { url "https://repo.grails.org/grails/core" }
+    maven { url "http://repo1.maven.org/maven2" }
 }
 
 dependencyManagement {

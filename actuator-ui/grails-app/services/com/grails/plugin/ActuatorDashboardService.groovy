@@ -34,11 +34,20 @@ class ActuatorDashboardService {
         if(!trace) return [:]
 
         Map traceMap = [trace: trace]
-
-        def callsGroupedByContentType = trace.groupBy { it.info.headers.response."Content-Type" }
-
-        traceMap.callsByContentType = callsGroupedByContentType
+        def collatedList = trace.collate(10)
+        traceMap.paginatedTrace = collatedList.collectEntries { [collatedList.indexOf(it), it] }
 
         traceMap
+    }
+
+    Map beansUtility(def beans) {
+        if(!beans) return [:]
+        [beans: beans]
+    }
+
+    Map mappingsUtility(def mappings) {
+        if(!mappings) return [:]
+
+        mappings
     }
 }

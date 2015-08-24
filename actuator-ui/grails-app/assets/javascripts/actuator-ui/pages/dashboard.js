@@ -1,3 +1,4 @@
+//= require_tree /plugins
 /*
  * Author: Abdullah A Almsaeed
  * Date: 4 Jan 2014
@@ -28,9 +29,9 @@ $(function () {
   });
 
   //bootstrap WYSIHTML5 - text editor
-  $(".textarea").wysihtml5();
+  //$(".textarea").wysihtml5();
 
-  $('.daterange').daterangepicker({
+  /*$('.daterange').daterangepicker({
     ranges: {
       'Today': [moment(), moment()],
       'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
@@ -43,7 +44,7 @@ $(function () {
     endDate: moment()
   }, function (start, end) {
     window.alert("You chose: " + start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-  });
+  });*/
 
   /* jQueryKnob */
   $(".knob").knob();
@@ -124,7 +125,7 @@ $(function () {
 
   /* Morris.js Charts */
   // Sales chart
-  var area = new Morris.Area({
+  /*var area = new Morris.Area({
     element: 'revenue-chart',
     resize: true,
     data: [
@@ -173,10 +174,10 @@ $(function () {
     gridLineColor: "#efefef",
     gridTextFamily: "Open Sans",
     gridTextSize: 10
-  });
+  });*/
 
   //Donut Chart
-  var donut = new Morris.Donut({
+  /*var donut = new Morris.Donut({
     element: 'sales-chart',
     resize: true,
     colors: ["#3c8dbc", "#f56954", "#00a65a"],
@@ -193,7 +194,7 @@ $(function () {
     area.redraw();
     donut.redraw();
     line.redraw();
-  });
+  });*/
 
   /* The todo list plugin */
   $(".todo-list").todolist({
