@@ -1,28 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<g:set var="appInfo" value="${session.appInfo}"/>
 
 <html>
 <head>
     <meta name="layout" content="actuator" charset="utf-8">
-    <title>${appInfo.app.name} | Admin</title>
 </head>
 
 <body>
-<!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>
-        ${appInfo.app?.name?.toUpperCase()}
-        <small>${appInfo.app?.version}
-            <g:if test="${appInfo.app?.grailsVersion}"> (Grails Version: ${appInfo.app?.grailsVersion})</g:if>
-        </small>
-    </h1>
-
-    <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Beans</li>
-    </ol>
-</section>
-
 <!-- Main content -->
 <section class="content">
 <!-- Small boxes (Stat box) -->

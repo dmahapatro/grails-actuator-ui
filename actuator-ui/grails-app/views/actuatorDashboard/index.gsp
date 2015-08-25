@@ -2,22 +2,9 @@
 <html>
 <head>
     <meta name="layout" content="actuator">
-    <title>${info.app.name} | Admin</title>
 </head>
 
 <body>
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-            ${info.app?.name?.toUpperCase()}
-            <small>${info.app?.version}<g:if test="${info.app?.grailsVersion}"> (Grails Version: ${info.app?.grailsVersion})</g:if></small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
-        </ol>
-    </section>
-
     <!-- Main content -->
     <section class="content">
         <!-- Small boxes (Stat box) -->

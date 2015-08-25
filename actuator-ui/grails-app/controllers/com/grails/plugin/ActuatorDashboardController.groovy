@@ -3,7 +3,6 @@ package com.grails.plugin
 import grails.converters.JSON
 
 class ActuatorDashboardController {
-
     ActuatorDashboardService actuatorDashboardService
 
     def index() {
@@ -14,17 +13,7 @@ class ActuatorDashboardController {
 
         metrics = actuatorDashboardService.metricsUtility(metrics)
 
-        // set info in session
-        session.setAttribute("appInfo", info)
-
-        Map modelMap = [
-            health: health,
-            info: info,
-            metrics: metrics,
-            env: env
-        ]
-
-        render view: "index", model: modelMap
+        [ health: health, info: info, metrics: metrics, env: env ]
     }
 
     def traceability() {

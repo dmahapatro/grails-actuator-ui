@@ -13,22 +13,10 @@ spring:
         template:
             check-template-location: false
 
-endpoints:
-    health:
-        sensitive: false
-    info:
-        sensitive: false
-    trace:
-        sensitive: false
-    metrics:
-        sensitive: false
-    beans:
-        sensitive: false
-    mappings:
-        sensitive: false
-
 ---
 grails:
+    assets:
+        bundle: true
     mime:
         disable:
             accept:
