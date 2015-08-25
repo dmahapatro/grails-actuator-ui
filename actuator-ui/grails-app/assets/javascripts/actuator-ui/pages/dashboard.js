@@ -1,4 +1,5 @@
-//= require_tree /plugins
+//= require plugins/jQueryUI/jquery-ui.min.js
+
 /*
  * Author: Abdullah A Almsaeed
  * Date: 4 Jan 2014
@@ -47,10 +48,10 @@ $(function () {
   });*/
 
   /* jQueryKnob */
-  $(".knob").knob();
+  //$(".knob").knob();
 
   //jvectormap data
-  var visitorsData = {
+  /*var visitorsData = {
     "US": 398, //USA
     "SA": 400, //Saudi Arabia
     "CA": 1000, //Canada
@@ -87,10 +88,10 @@ $(function () {
       if (typeof visitorsData[code] != "undefined")
         el.html(el.html() + ': ' + visitorsData[code] + ' new visitors');
     }
-  });
+  });*/
 
   //Sparkline charts
-  var myvalues = [1000, 1200, 920, 927, 931, 1027, 819, 930, 1021];
+  /*var myvalues = [1000, 1200, 920, 927, 931, 1027, 819, 930, 1021];
   $('#sparkline-1').sparkline(myvalues, {
     type: 'line',
     lineColor: '#92c1dc',
@@ -113,15 +114,15 @@ $(function () {
     fillColor: "#ebf4f9",
     height: '50',
     width: '80'
-  });
+  });*/
 
   //The Calender
-  $("#calendar").datepicker();
+  //$("#calendar").datepicker();
 
   //SLIMSCROLL FOR CHAT WIDGET
-  $('#chat-box').slimScroll({
+  /*$('#chat-box').slimScroll({
     height: '250px'
-  });
+  });*/
 
   /* Morris.js Charts */
   // Sales chart
@@ -197,7 +198,7 @@ $(function () {
   });*/
 
   /* The todo list plugin */
-  $(".todo-list").todolist({
+  /*$(".todo-list").todolist({
     onCheck: function (ele) {
       window.console.log("The element has been checked");
       return ele;
@@ -206,6 +207,6 @@ $(function () {
       window.console.log("The element has been unchecked");
       return ele;
     }
-  });
+  });*/
 
 });

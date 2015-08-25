@@ -144,7 +144,7 @@
                             <h3 class="box-title">HTTP Call Statistics</h3>
                         </div><!-- /.box-header -->
                         <div class="box-body">
-                            <table id="example2" class="table table-bordered table-hover">
+                            <table id="counterGauge" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
                                     <th>#</th>
@@ -289,15 +289,15 @@
                     "#heapChart",
                     [{value: heapUsed, label: "Used"}, {value: heapFree, label: "Free"}]
                 );
-        });
 
-        $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
+            $('#counterGauge').DataTable({
+              "paging": true,
+              "lengthChange": false,
+              "searching": false,
+              "ordering": true,
+              "info": true,
+              "autoWidth": false
+            });
         });
     </g:javascript>
 </body>

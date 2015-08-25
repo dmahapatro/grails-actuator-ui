@@ -2,7 +2,6 @@
 *= require bootstrap/css/bootstrap
 *= require skins/_all-skins
 *= require plugins/datatables/dataTables.bootstrap
-*= require plugins/datatables/jquery.dataTables
 *= require_tree .
 */
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);

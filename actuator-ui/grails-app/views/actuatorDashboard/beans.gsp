@@ -33,17 +33,18 @@
                 <div class="box box-success">
                     <div class="box-header">
                         <h3 class="box-title">Beans loaded to Context: ${appContext.context}</h3>
-                        <div class="box-tools">
-                        </div>
                     </div><!-- /.box-header -->
-                    <div class="box-body table-responsive no-padding">
-                        <table class="table table-hover">
-                            <tbody><tr>
+                    <div class="box-body">
+                        <table id="beansTable" class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
                                 <th>#</th>
                                 <th>Bean</th>
                                 <th>Scope</th>
                                 <th>Depends On</th>
                             </tr>
+                            </thead>
+                            <tbody>
                             <g:each var="beanItem" in="${appContext.beans}" status="id">
                                 <tr>
                                     <td>${id + 1}</td>
@@ -74,6 +75,14 @@
                                 </tr>
                             </g:each>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th>#</th>
+                                <th>Bean</th>
+                                <th>Scope</th>
+                                <th>Depends On</th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
@@ -81,5 +90,17 @@
         </div>
     </g:each><!-- /.row (main row) -->
 </section><!-- /.content -->
+<g:javascript>
+    $(function () {
+        $("#beansTable").DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false
+        });
+    });
+</g:javascript>
 </body>
 </html>

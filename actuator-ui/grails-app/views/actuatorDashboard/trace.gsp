@@ -29,18 +29,11 @@
             <div class="box box-success">
                 <div class="box-header">
                     <h3 class="box-title">HTTP Call Trace</h3>
-                    <div class="box-tools">
-                        %{--<div class="input-group" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
-                            <div class="input-group-btn">
-                                <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-                            </div>
-                        </div>--}%
-                    </div>
                 </div><!-- /.box-header -->
-                <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover">
-                        <tbody><tr>
+                <div class="box-body">
+                    <table id="traceTable" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
                             <th>#</th>
                             <th>Method</th>
                             <th>Path</th>
@@ -49,6 +42,8 @@
                             <th>Status</th>
                             <th>Content Type</th>
                         </tr>
+                        </thead>
+                        <tbody>
                         <g:each var="traceItem" in="${traceMap.trace}" status="id">
                             <tr>
                                 <td>${id+1}</td>
@@ -60,14 +55,42 @@
                                     <label class="label label-${traceItem.info.headers.response.status.startsWith('2') ? 'success' : 'danger'}">
                                         ${traceItem.info.headers.response.status}</label>
                                 </td>
-                                <td><code>${traceItem.info.headers.response."Content-Type"}</code></td>
+                                <td>
+                                    <g:if test="${traceItem.info.headers.response."Content-Type"}">
+                                        <code>${traceItem.info.headers.response."Content-Type"}</code>
+                                    </g:if>
+                                </td>
                             </tr>
                         </g:each>
-                        </tbody></table>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th>#</th>
+                            <th>Method</th>
+                            <th>Path</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                            <th>Content Type</th>
+                        </tr>
+                        </tfoot>
+                    </table>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
         </div>
     </div><!-- /.row (main row) -->
     </section><!-- /.content -->
+<g:javascript>
+    $(function () {
+        $("#traceTable").DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false
+        });
+    });
+</g:javascript>
 </body>
 </html>

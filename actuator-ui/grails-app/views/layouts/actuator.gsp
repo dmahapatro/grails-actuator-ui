@@ -21,8 +21,8 @@
 
     <g:layoutHead/>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
 
+<body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
     <header class="main-header">
         <g:link action="index" class="logo">
@@ -36,12 +36,25 @@
 
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
+                    <li class="user">
+                        <plugin:isNotAvailable name="spring-security-core">
+                            <p class="navbar-text">
+                                <i class="fa fa-warning text-red"></i>
+                                <span style="color: white">Spring Security not installed! (UNSECURED)</span>
+                            </p>
+                        </plugin:isNotAvailable>
+                    </li>
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <asset:image src="actuator-ui/avatar5.png" class="user-image" alt="User Image"/>
                             <span class="hidden-xs">
-                                <sec:ifLoggedIn><sec:loggedInUserInfo field="username"/></sec:ifLoggedIn>
-                                <sec:ifNotLoggedIn>Anonymous</sec:ifNotLoggedIn>
+                                <plugin:isAvailable name="spring-security-core">
+                                    <sec:ifLoggedIn><sec:loggedInUserInfo field="username"/></sec:ifLoggedIn>
+                                    <sec:ifNotLoggedIn>Anonymous</sec:ifNotLoggedIn>
+                                </plugin:isAvailable>
+                                <plugin:isNotAvailable name="spring-security-core">
+                                    Anonymous
+                                </plugin:isNotAvailable>
                             </span>
                         </a>
                         <ul class="dropdown-menu">
@@ -50,13 +63,20 @@
                                 <asset:image src="actuator-ui/avatar5.png" class="img-circle" alt="User Image"/>
 
                                 <p>
-                                    <sec:ifLoggedIn><sec:loggedInUserInfo field="username"/></sec:ifLoggedIn>
-                                    <sec:ifNotLoggedIn>Anonymous</sec:ifNotLoggedIn>
+                                    <plugin:isAvailable name="spring-security-core">
+                                        <sec:ifLoggedIn><sec:loggedInUserInfo field="username"/></sec:ifLoggedIn>
+                                        <sec:ifNotLoggedIn>Anonymous</sec:ifNotLoggedIn>
+                                    </plugin:isAvailable>
+                                    <plugin:isNotAvailable name="spring-security-core">
+                                        Anonymous
+                                    </plugin:isNotAvailable>
                                 </p>
                             </li>
                             <li class="user-footer">
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    <plugin:isAvailable name="spring-security-core">
+                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    </plugin:isAvailable>
                                 </div>
                             </li>
                         </ul>
@@ -81,30 +101,42 @@
 
                 <div class="pull-left info">
                     <p>
-                        <sec:ifLoggedIn><sec:loggedInUserInfo field="username"/></sec:ifLoggedIn>
-                        <sec:ifNotLoggedIn>Anonymous</sec:ifNotLoggedIn>
+                        <plugin:isAvailable name="spring-security-core">
+                            <sec:ifLoggedIn><sec:loggedInUserInfo field="username"/></sec:ifLoggedIn>
+                            <sec:ifNotLoggedIn>Anonymous</sec:ifNotLoggedIn>
+                        </plugin:isAvailable>
+                        <plugin:isNotAvailable name="spring-security-core">
+                            Anonymous
+                        </plugin:isNotAvailable>
                     </p>
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
-            <!-- search form -->
-            %{--<form action="#" method="get" class="sidebar-form">
-                <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i
-                                class="fa fa-search"></i></button>
-                    </span>
-                </div>
-            </form>--}%
-            <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">MAIN NAVIGATION</li>
-                <li class="active"><g:link action="index"><i class="fa fa-circle-o text-orange"></i> Dashboard</g:link></li>
-                <li><g:link action="traceability"><i class="fa fa-circle-o text-primary"></i> Traceability<span class="label label-primary pull-right">HTTP</span></g:link></li>
-                <li><g:link action="springBeans"><i class="fa fa-circle-o text-red"></i> Beans</g:link></li>
-                <li><g:link action="allMappings"><i class="fa fa-circle-o text-success"></i> Mappings</g:link></li>
+                <!-- TODO: Quick and dirty work around to set the clicked item as active. Fix me. -->
+                <li class="${actionName == 'index' ? 'active' : ''}">
+                    <g:link action="index">
+                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                    </g:link>
+                </li>
+                <li class="${actionName == 'traceability' ? 'active' : ''}">
+                    <g:link action="traceability">
+                        <i class="fa fa-tasks"></i> <span>Traceability</span>
+                        <span class="label label-primary pull-right">HTTP</span>
+                    </g:link>
+                </li>
+                <li class="${actionName == 'springBeans' ? 'active' : ''}">
+                    <g:link action="springBeans">
+                        <i class="fa fa-cubes"></i> <span>Beans</span>
+                    </g:link>
+                </li>
+                <li class="${actionName == 'allMappings' ? 'active' : ''}">
+                    <g:link action="allMappings">
+                        <i class="fa fa-map-signs"></i> <span>Mappings</span>
+                    </g:link>
+                </li>
             </ul>
         </section>
         <!-- /.sidebar -->
@@ -307,21 +339,5 @@
 </div>
 
 <asset:javascript src="actuator-ui/app.js"></asset:javascript>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<asset:script type="text/javascript">
-    $(function () {
-        $.widget.bridge('uibutton', $.ui.button);
-
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
-        });
-      });
-</asset:script>
 </body>
 </html>
