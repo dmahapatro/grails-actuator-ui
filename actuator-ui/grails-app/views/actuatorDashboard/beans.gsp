@@ -12,8 +12,9 @@
 <section class="content-header">
     <h1>
         ${appInfo.app?.name?.toUpperCase()}
-        <small>${appInfo.app?.version}<g:if
-                test="${appInfo.app?.grailsVersion}">(Grails Version: ${appInfo.app?.grailsVersion})</g:if></small>
+        <small>${appInfo.app?.version}
+            <g:if test="${appInfo.app?.grailsVersion}"> (Grails Version: ${appInfo.app?.grailsVersion})</g:if>
+        </small>
     </h1>
 
     <ol class="breadcrumb">

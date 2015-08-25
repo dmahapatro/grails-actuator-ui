@@ -27,6 +27,22 @@ class ActuatorDashboardService {
             metrics.heapUsedPercent = ( metrics["heap.used"] / metrics.heap ) / 100 as int
         }
 
+        // Counter and Gauge
+        def counters = metrics.findAll { String k, v -> k.startsWith('counter') && !k.contains('.assets.') }
+        def gauges   = metrics.findAll { String k, v -> k.startsWith('gauge') && !k.contains('.assets.') }
+
+        metrics.countersByStatus = counters.collect { String k, v ->
+            List brokenKey = k.tokenize(/./)
+            String name = brokenKey[3..-1].join(/./)
+
+            [
+                name: name != 'star-star' ? name : "/**",
+                status: brokenKey[2],
+                value: v as int,
+                gauge: gauges.findResult { key, value -> key == "gauge.response.$name" ? value as int : null }
+            ]
+        }
+
         return metrics
     }
 

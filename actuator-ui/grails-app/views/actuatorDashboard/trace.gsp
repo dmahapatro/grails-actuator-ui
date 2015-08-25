@@ -23,7 +23,6 @@
 
     <!-- Main content -->
     <section class="content">
-        <!-- Small boxes (Stat box) -->
     <!-- Main row -->
     <div class="row">
         <div class="col-xs-12">

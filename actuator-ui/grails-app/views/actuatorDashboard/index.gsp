@@ -6,172 +6,215 @@
 </head>
 
 <body>
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                ${info.app?.name?.toUpperCase()}
-                <small>${info.app?.version}<g:if test="${info.app?.grailsVersion}"> (Grails Version: ${info.app?.grailsVersion})</g:if></small>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Dashboard</li>
-            </ol>
-        </section>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            ${info.app?.name?.toUpperCase()}
+            <small>${info.app?.version}<g:if test="${info.app?.grailsVersion}"> (Grails Version: ${info.app?.grailsVersion})</g:if></small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
 
-        <!-- Main content -->
-        <section class="content">
-            <!-- Small boxes (Stat box) -->
-            <div class="row">
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-${health.status == 'UP' ? 'green' : 'red'}">
-                        <div class="inner">
-                            <h3>${health.status}</h3>
-                            <p>Status</p>
-                        </div>
-
-                        <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">
-                            More info <i class="fa fa-arrow-circle-right"></i>
-                        </a>
+    <!-- Main content -->
+    <section class="content">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-${health.status == 'UP' ? 'green' : 'red'}">
+                    <div class="inner">
+                        <h3>${health.status}</h3>
+                        <p>Status</p>
                     </div>
-                </div><!-- ./col -->
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-yellow">
-                        <div class="inner">
-                            <h3>
-                                ${metrics.uptimeHours}<sup style="font-size: 20px">hrs</sup>
-                                ${metrics.uptimeMinutes}<sup style="font-size: 20px">min</sup>
-                                ${metrics.uptimeSeconds}<sup style="font-size: 20px">sec</sup>
-                            </h3>
 
-                            <p>System Uptime</p>
-                        </div>
-
-                        <div class="icon">
-                            <i class="ion ion-ios-pulse-strong"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
                     </div>
-                </div><!-- ./col -->
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-teal">
-                        <div class="inner">
-                            <h3>${metrics.threads}</h3>
-
-                            <p>Threads</p>
-                        </div>
-
-                        <div class="icon">
-                            <i class="ion ion-network"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div><!-- ./col -->
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-${metrics.freeMemPercent < 30 ? 'red' :  metrics.freeMemPercent < 60 ? 'orange' : 'green'}">
-                        <div class="inner">
-                            <h3>${metrics.freeMemPercent}<sup style="font-size: 20px">%</sup></h3>
-
-                            <p>Free Memory</p>
-                        </div>
-
-                        <div class="icon">
-                            <i class="fa fa-battery-${metrics.freeMemPercent < 30 ? 'quarter' : metrics.freeMemPercent < 60 ? 'half' : metrics.freeMemPercent < 80 ? 'three-quarters' : 'full'}"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div><!-- ./col -->
-            </div><!-- /.row -->
-            <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-aqua">
-                            <g:set var="osName" value="${env.systemProperties["os.name"]}"/>
-                            <g:set var="osVersion" value="${env.systemProperties["os.version"]}"/>
-                            <g:set var="osArch" value="${env.systemProperties["os.arch"]}"/>
-                            <i class="fa fa-${osName?.toLowerCase()?.startsWith("windows") ? "windows" : osName?.toLowerCase()?.startsWith("mac") ? "apple" : "linux"}"></i>
-                        </span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">${osName}</span>
-                            <span class="info-box-number">${osVersion}</span>
-                            <span class="">${osArch}</span>
-                        </div><!-- /.info-box-content -->
-                    </div><!-- /.info-box -->
-                </div><!-- /.col -->
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-green"><i class="fa fa-coffee"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">Java</span>
-                            <span class="info-box-number">${env.systemProperties["java.version"]}</span>
-                            <span class="">${env.systemProperties["java.vendor"]}</span>
-                        </div><!-- /.info-box-content -->
-                    </div><!-- /.info-box -->
-                </div><!-- /.col -->
-
-            <!-- fix for small devices only -->
-                <div class="clearfix visible-sm-block"></div>
-
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-yellow"><i class="ion ion-earth"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">${env.systemProperties["user.country"]}</span>
-                            <span class="info-box-number">${env.systemProperties["user.timezone"]}</span>
-                        </div><!-- /.info-box-content -->
-                    </div><!-- /.info-box -->
-                </div><!-- /.col -->
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-teal"><i class="ion ion-ios-gear"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">PID</span>
-                            <span class="info-box-number">${env.systemProperties["PID"]}</span>
-                        </div><!-- /.info-box-content -->
-                    </div><!-- /.info-box -->
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-            <div class="row">
-                <div class="col-md-6 col-sm-12 col-xs-12">
-                    <div class="box box-danger">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Memory (KB)</h3>
-                            <div class="box-tools pull-right">
-                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                            </div>
-                        </div>
-                        <div class="box-body">
-                            <input id="freeMemory" hidden value="${metrics["mem.free"]}">
-                            <input id="memory" hidden value="${metrics.mem}">
-                            <canvas id="memoryChart" style="height: 300px; width: 687px;" width="687" height="343"></canvas>
-                        </div><!-- /.box-body -->
-                    </div>
+                    <a href="#" class="small-box-footer">
+                        More info <i class="fa fa-arrow-circle-right"></i>
+                    </a>
                 </div>
-                <div class="col-md-6 col-sm-12 col-xs-12">
-                    <div class="box box-danger">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Heap (KB)</h3>
-                            <div class="box-tools pull-right">
-                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                            </div>
-                        </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-yellow">
+                    <div class="inner">
+                        <h3>
+                            ${metrics.uptimeHours}<sup style="font-size: 20px">hrs</sup>
+                            ${metrics.uptimeMinutes}<sup style="font-size: 20px">min</sup>
+                            ${metrics.uptimeSeconds}<sup style="font-size: 20px">sec</sup>
+                        </h3>
+
+                        <p>System Uptime</p>
+                    </div>
+
+                    <div class="icon">
+                        <i class="ion ion-ios-pulse-strong"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-teal">
+                    <div class="inner">
+                        <h3>${metrics.threads}</h3>
+
+                        <p>Threads</p>
+                    </div>
+
+                    <div class="icon">
+                        <i class="ion ion-network"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-orange">
+                    <div class="inner">
+                        <h3>${metrics["httpsessions.active"]}</h3>
+                        <p>Active HTTP Sessions</p>
+                    </div>
+
+                    <div class="icon">
+                        <i class="fa fa-exchange"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div><!-- ./col -->
+        </div><!-- /.row -->
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-aqua">
+                        <g:set var="osName" value="${env.systemProperties["os.name"]}"/>
+                        <g:set var="osVersion" value="${env.systemProperties["os.version"]}"/>
+                        <g:set var="osArch" value="${env.systemProperties["os.arch"]}"/>
+                        <i class="fa fa-${osName?.toLowerCase()?.startsWith("windows") ? "windows" : osName?.toLowerCase()?.startsWith("mac") ? "apple" : "linux"}"></i>
+                    </span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">${osName}</span>
+                        <span class="info-box-number">${osVersion}</span>
+                        <span class="">${osArch}</span>
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-green"><i class="fa fa-coffee"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Java</span>
+                        <span class="info-box-number">${env.systemProperties["java.version"]}</span>
+                        <span class="">${env.systemProperties["java.vendor"]}</span>
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+            </div><!-- /.col -->
+
+        <!-- fix for small devices only -->
+            <div class="clearfix visible-sm-block"></div>
+
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-yellow"><i class="ion ion-earth"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">${env.systemProperties["user.country"]}</span>
+                        <span class="info-box-number">${env.systemProperties["user.timezone"]}</span>
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-teal"><i class="ion ion-ios-gear"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">PID</span>
+                        <span class="info-box-number">${env.systemProperties["PID"]}</span>
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+        <g:if test="${metrics.countersByStatus}">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box box-success">
+                        <div class="box-header">
+                            <h3 class="box-title">HTTP Call Statistics</h3>
+                        </div><!-- /.box-header -->
                         <div class="box-body">
-                            <input id="heap" hidden value="${metrics.heap}">
-                            <input id="heapUsed" hidden value="${metrics["heap.used"]}">
-                            <canvas id="heapChart" style="height: 300px; width: 687px;" width="687" height="343"></canvas>
+                            <table id="example2" class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>XHR Resource</th>
+                                    <th>Response Status</th>
+                                    <th>No. of Calls</th>
+                                    <th>Response Time for last call (<strong>ms</strong>)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <g:each var="counter" in="${metrics.countersByStatus}" status="id">
+                                    <tr>
+                                        <td>${id + 1}</td>
+                                        <td><code>${counter.name}</code></td>
+                                        <td><label class="label label-${counter.status?.startsWith('2') ? 'success' : 'danger'}">${counter.status}</label></td>
+                                        <td>${counter.value}</td>
+                                        <td>${counter.gauge}</td>
+                                    </tr>
+                                </g:each>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>#</th>
+                                    <th>XHR Resource</th>
+                                    <th>Response Status</th>
+                                    <th>No. of Calls</th>
+                                    <th>Response Time for last call (<strong>ms</strong>)</th>
+                                </tr>
+                                </tfoot>
+                            </table>
                         </div><!-- /.box-body -->
                     </div>
                 </div>
             </div>
-        </section><!-- /.content -->
+        </g:if>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Memory (KB)</h3>
+                        <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <input id="freeMemory" hidden value="${metrics["mem.free"]}">
+                        <input id="memory" hidden value="${metrics.mem}">
+                        <canvas id="memoryChart" style="height: 300px; width: 687px;" width="687" height="343"></canvas>
+                    </div><!-- /.box-body -->
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Heap (KB)</h3>
+                        <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <input id="heap" hidden value="${metrics.heap}">
+                        <input id="heapUsed" hidden value="${metrics["heap.used"]}">
+                        <canvas id="heapChart" style="height: 300px; width: 687px;" width="687" height="343"></canvas>
+                    </div><!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+    </section><!-- /.content -->
     <g:javascript>
         $(function(){
             var memory = parseInt($("#memory").val()),
@@ -248,6 +291,14 @@
                 );
         });
 
+        $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+        });
     </g:javascript>
 </body>
 </html>
