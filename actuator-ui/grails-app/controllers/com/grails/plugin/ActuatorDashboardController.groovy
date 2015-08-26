@@ -6,10 +6,10 @@ class ActuatorDashboardController {
     ActuatorDashboardService actuatorDashboardService
 
     def index() {
-        def health  = JSON.parse(g.include(view: '/health') as String)
-        def info    = JSON.parse(g.include(view: '/info') as String)
-        def metrics = JSON.parse(g.include(view: '/metrics') as String)
-        def env     = JSON.parse(g.include(view: '/env') as String)
+        def health  = parsedEndpointResponse 'health'
+        def info    = parsedEndpointResponse 'info'
+        def metrics = parsedEndpointResponse 'metrics'
+        def env     = parsedEndpointResponse 'env'
 
         metrics = actuatorDashboardService.metricsUtility(metrics)
 
@@ -17,23 +17,31 @@ class ActuatorDashboardController {
     }
 
     def traceability() {
-        def trace   = JSON.parse(g.include(view: '/trace') as String)
-        Map traceMap = actuatorDashboardService.traceUtility(trace)
+        def trace   = parsedEndpointResponse 'trace'
+        def traceMap = actuatorDashboardService.traceUtility(trace)
 
         render view: "trace", model: [traceMap: traceMap]
     }
 
     def springBeans() {
-        def allBeans = JSON.parse(g.include(view: '/beans') as String)
+        def allBeans = parsedEndpointResponse 'beans'
         Map beansMap = actuatorDashboardService.beansUtility(allBeans)
 
         render view: "beans", model: [beansMap: beansMap]
     }
 
     def allMappings() {
-        def allMappings = JSON.parse(g.include(view: '/mappings') as String)
+        def allMappings = parsedEndpointResponse 'mappings'
         Map mappingsMap = actuatorDashboardService.mappingsUtility(allMappings)
 
         render view: "mappings", model: [mappingsMap: mappingsMap]
+    }
+
+    private def parsedEndpointResponse(String endpointId) {
+        JSON.parse(hitEndpoint(endpointId))
+    }
+
+    String hitEndpoint(String endpointId) {
+        g.include(view: "/$endpointId") as String
     }
 }

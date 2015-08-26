@@ -4,7 +4,7 @@ import org.joda.time.Period
 
 class ActuatorDashboardService {
 
-    Map metricsUtility(def metrics) {
+    def metricsUtility(def metrics) {
         if(!metrics) return [:]
 
         // Uptime
@@ -43,10 +43,10 @@ class ActuatorDashboardService {
             ]
         }
 
-        return metrics
+        metrics
     }
 
-    Map traceUtility(def trace) {
+    def traceUtility(def trace) {
         if(!trace) return [:]
 
         Map traceMap = [trace: trace]
