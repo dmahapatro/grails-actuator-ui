@@ -3,7 +3,10 @@ package com.grails.plugin
 import grails.converters.JSON
 
 class ActuatorDashboardController {
+    static namespace = "actuator"
+
     ActuatorDashboardService actuatorDashboardService
+    def actuatorUiConfig
 
     def index() {
         def health  = parsedEndpointResponse 'health'
@@ -25,7 +28,7 @@ class ActuatorDashboardController {
 
     def springBeans() {
         def allBeans = parsedEndpointResponse 'beans'
-        Map beansMap = actuatorDashboardService.beansUtility(allBeans)
+        def beansMap = actuatorDashboardService.beansUtility(allBeans)
 
         render view: "beans", model: [beansMap: beansMap]
     }

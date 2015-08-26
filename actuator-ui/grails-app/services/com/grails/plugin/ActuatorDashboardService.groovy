@@ -8,7 +8,7 @@ class ActuatorDashboardService {
         if(!metrics) return [:]
 
         // Uptime
-        if(metrics["instance.uptime"]) {
+        if( metrics["instance.uptime"] && metrics["instance.uptime"] in Number ) {
             Period uptimePeriod = new Period(metrics["instance.uptime"] as Long)
             if (uptimePeriod) {
                 metrics.uptimeHours = uptimePeriod.hours
@@ -23,8 +23,8 @@ class ActuatorDashboardService {
         }
 
         // Heap
-        if ( metrics.heap && metrics["heap.init"] && metrics["heap.committed"] && metrics["heap.used"] ) {
-            metrics.heapUsedPercent = ( metrics["heap.used"] / metrics.heap ) / 100 as int
+        if ( metrics.heap && metrics["heap.used"] ) {
+            metrics.heapUsedPercent = ( metrics["heap.used"] / metrics.heap ) * 100 as int
         }
 
         // Counter and Gauge
@@ -33,6 +33,11 @@ class ActuatorDashboardService {
 
         metrics.countersByStatus = counters.collect { String k, v ->
             List brokenKey = k.tokenize(/./)
+
+            if(!brokenKey || brokenKey.size() < 4 ) {
+                return [:]
+            }
+
             String name = brokenKey[3..-1].join(/./)
 
             [
@@ -50,13 +55,12 @@ class ActuatorDashboardService {
         if(!trace) return [:]
 
         Map traceMap = [trace: trace]
-        def collatedList = trace.collate(10)
-        traceMap.paginatedTrace = collatedList.collectEntries { [collatedList.indexOf(it), it] }
+        traceMap.paginatedTrace = trace.collate(10).indexed()
 
         traceMap
     }
 
-    Map beansUtility(def beans) {
+    def beansUtility(def beans) {
         if(!beans) return [:]
         [beans: beans]
     }

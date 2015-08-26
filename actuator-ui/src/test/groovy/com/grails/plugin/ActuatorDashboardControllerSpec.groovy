@@ -12,13 +12,11 @@ class ActuatorDashboardControllerSpec extends Specification {
         controller.actuatorDashboardService = Mock(ActuatorDashboardService) {
             metricsUtility(_) >> { def param -> param }
             traceUtility(_) >> { def param -> param }
+            beansUtility(_) >> { def param -> param }
         }
         controller.metaClass.hitEndpoint = { String id ->
             '{"a": "b"}'
         }
-    }
-
-    def cleanup() {
     }
 
     void "test model returned from index action has actuator endpoints information"() {
@@ -39,5 +37,25 @@ class ActuatorDashboardControllerSpec extends Specification {
         model.size()
         model.keySet() == ['traceMap'] as Set
         view == '/actuatorDashboard/trace'
+    }
+
+    void "test model returned from springBeans has bean information and view rendered in beans gsp"() {
+        when:
+        controller.springBeans()
+
+        then:
+        model.size()
+        model.keySet() == ['beansMap'] as Set
+        view == '/actuatorDashboard/beans'
+    }
+
+    void "test model returned from allMappings has mapping information and view rendered in mappings gsp"() {
+        when:
+        controller.allMappings()
+
+        then:
+        model.size()
+        model.keySet() == ['mappingsMap'] as Set
+        view == '/actuatorDashboard/mappings'
     }
 }

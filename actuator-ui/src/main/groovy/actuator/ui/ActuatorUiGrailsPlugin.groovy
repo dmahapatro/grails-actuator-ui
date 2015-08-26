@@ -1,5 +1,6 @@
 package actuator.ui
 
+import com.grails.plugin.actuator.ui.ActuatorEndpointsConfig
 import grails.plugins.*
 
 class ActuatorUiGrailsPlugin extends Plugin {
@@ -19,39 +20,14 @@ The response from HTTP endpoints available in a Grails 3 (Spring Boot) app is pr
     def profiles = ['web']
     def documentation = "http://grails.org/plugin/actuator-ui"
     def license = "APACHE"
-    //def developers = [ [ name: "", email: "" ]]
-
-    // Location of the plugin's issue tracker.
-    // def issueManagement = [ system: "JIRA", url: "http://jira.grails.org/browse/GPMYPLUGIN" ]
-
-    // Online location of the plugin's browseable source code.
-    // def scm = [ url: "http://svn.codehaus.org/grails-plugins/" ]
+    def issueManagement = [ system: "github", url: "https://github.com/dmahapatro/grails-actuator-ui/issues" ]
+    def scm = [ url: "https://github.com/dmahapatro/grails-actuator-ui/" ]
 
     Closure doWithSpring() { {->
-            // TODO Implement runtime spring config (optional)
+            actuatorUiConfig(ActuatorEndpointsConfig) {
+                endpointsProperties = application.config.getProperty('endpoints', Map, [:])
+                managementProperties = application.config.getProperty('management', Map, [:])
+            }
         } 
-    }
-
-    void doWithDynamicMethods() {
-        // TODO Implement registering dynamic methods to classes (optional)
-    }
-
-    void doWithApplicationContext() {
-        // TODO Implement post initialization spring config (optional)
-    }
-
-    void onChange(Map<String, Object> event) {
-        // TODO Implement code that is executed when any artefact that this plugin is
-        // watching is modified and reloaded. The event contains: event.source,
-        // event.application, event.manager, event.ctx, and event.plugin.
-    }
-
-    void onConfigChange(Map<String, Object> event) {
-        // TODO Implement code that is executed when the project configuration changes.
-        // The event is the same as for 'onChange'.
-    }
-
-    void onShutdown(Map<String, Object> event) {
-        // TODO Implement code that is executed when the application shuts down (optional)
     }
 }
