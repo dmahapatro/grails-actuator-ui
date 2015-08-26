@@ -1,1 +1,1 @@
-include 'actuator-ui', 'actuator-ui-app', 'grails3-library-example'
+include 'actuator-ui', 'actuator-ui-app'
