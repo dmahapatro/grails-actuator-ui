@@ -80,3 +80,5 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = gradleWrapperVersion
 }
+
+check.dependsOn ":actuator-ui:check"
