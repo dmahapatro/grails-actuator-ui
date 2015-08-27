@@ -77,7 +77,11 @@
                             <li class="user-footer">
                                 <div class="pull-right">
                                     <plugin:isAvailable name="spring-security-core">
-                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                        <sec:ifLoggedIn>
+                                            <form name="logout" method="POST" action="${createLink(controller:'logout') }">
+                                                <input type="submit" class="btn btn-default btn-flat" value="Sign out">
+                                            </form>
+                                        </sec:ifLoggedIn>
                                     </plugin:isAvailable>
                                 </div>
                             </li>
@@ -162,7 +166,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> <g:meta name="info.app.version"/>
         </div>
-        <strong>Copyright &copy; 2014-2015 </strong>
+        <strong>Copyright &copy; 2015 </strong>
     </footer>
 </div>
 
