@@ -12,15 +12,15 @@ class ActuatorEndpointsConfig {
     }
 
     String getContextPath() {
-        managementProperties."context-path" ?: ''
+        managementProperties?."context-path" ?: ''
     }
 
     String getPort() {
-        managementProperties.port ?: ''
+        managementProperties?.port ?: ''
     }
 
     String getAddress() {
-        managementProperties.address ?: ''
+        managementProperties?.address ?: ''
     }
 
     boolean isHttpDisabled() {
@@ -41,16 +41,16 @@ class ActuatorEndpointsConfig {
     }
 
     private boolean isEnabled(ActuatorEndpoints endpointEnum) {
-        String value = endpointsProperties."$endpointEnum.value".enabled
+        String value = endpointsProperties?."$endpointEnum.value"?.enabled
         value != null ? value.toBoolean() : true
     }
 
     private String findEndpointId(ActuatorEndpoints endpointEnum) {
-        endpointsProperties."$endpointEnum.value".id ?: endpointEnum.value
+        endpointsProperties?."$endpointEnum.value"?.id ?: endpointEnum.value
     }
 
     private boolean isSensitive(ActuatorEndpoints endpointEnum) {
-        String value = endpointsProperties."$endpointEnum.value".sensitive
+        String value = endpointsProperties?."$endpointEnum.value"?.sensitive
         value != null ? value.toBoolean() : true
     }
 }

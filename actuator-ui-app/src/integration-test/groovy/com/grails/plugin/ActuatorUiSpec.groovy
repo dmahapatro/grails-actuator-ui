@@ -3,10 +3,19 @@ package com.grails.plugin
 import geb.spock.GebSpec
 import grails.test.mixin.integration.Integration
 import grails.transaction.Rollback
+import org.grails.plugins.actuator.ui.ActuatorEndpointsConfig
+import org.springframework.beans.factory.annotation.Autowired
 
 @Integration
 @Rollback
 class ActuatorUiSpec extends GebSpec {
+    @Autowired
+    ActuatorEndpointsConfig actuatorUiConfig
+
+    def cleanup() {
+        actuatorUiConfig.managementProperties = [:]
+        actuatorUiConfig.endpointsProperties = [:]
+    }
 
     void "test dashboard"() {
         when: "The home page is visited"
@@ -64,5 +73,68 @@ class ActuatorUiSpec extends GebSpec {
 
         then: "http call trace is shown in a data table"
         $('section', class: 'content').find(".box-title").text() == "Request Mappings"
+    }
+
+    void "test user is forwarded to error page with status 406 if endpoints are not enabled"() {
+        given: 'endpoints are not enabled'
+        actuatorUiConfig.endpointsProperties = [enabled: false]
+
+        when:
+        go "/actuator/dashboard"
+
+        then: 'user forwarded to error page'
+        $('section', class: 'content').find("h2.headline").text() == "406"
+        $('section', class: 'content').find("h3").text() == "Not Acceptable"
+        $('section', class: 'content').find(".error-content").find("div").text() ==
+            "Application configuration has some of the endpoints disabled. Check config property 'endpoints.enabled' should be true."
+    }
+
+    void "test user is forwarded to error page with status 406 if particular endpoint(s) is/are disabled"() {
+        given: 'endpoints are not enabled'
+        actuatorUiConfig.endpointsProperties = [health: [enabled: false]]
+
+        when:
+        go "/actuator/dashboard"
+
+        then: 'user forwarded to error page'
+        $('section', class: 'content').find("h2.headline").text() == "406"
+        $('section', class: 'content').find("h3").text() == "Not Acceptable"
+        $('section', class: 'content').find(".error-content").find("div").text() ==
+            "Application configuration has some of the endpoints disabled. Check config property 'endpoints.*.enabled' should be true."
+    }
+
+    void "test user is forwarded to error page with status 505 if http is not enabled for actuator"() {
+        given: 'management port is set to -1 to disable http endpoints'
+        actuatorUiConfig.managementProperties = [port: -1]
+
+        when:
+        go "/actuator/dashboard"
+
+        then: 'user forwarded to error page'
+        $('section', class: 'content').find("h2.headline").text() == "505"
+        $('section', class: 'content').find("h3").text() == "HTTP Version not supported"
+        $('section', class: 'content').find(".error-content").find("div").text() ==
+            "Application configuration does not allow HTTP call for actuator endpoints. Check config property 'management.port' should not be -1."
+    }
+
+    void "test user is forwarded to error page with status 501 if port or address is customized"() {
+        given: 'management port is set to -1 to disable http endpoints'
+        actuatorUiConfig.managementProperties = configuration
+
+        when:
+        go "/actuator/dashboard"
+
+        then: 'user forwarded to error page'
+        $('section', class: 'content').find("h2.headline").text() == "501"
+        $('section', class: 'content').find("h3").text() == "Not Implemented"
+        $('section', class: 'content').find(".error-content").find("div").text() ==
+            "Coming Soon... Support for custom address and port for actuator. Check config property 'management.port' and 'management.address' should not be specified."
+
+        where:
+        configuration << [
+            [port: 8081],
+            [address: '127.0.0.1'],
+            [port: 8081, address: '127.0.0.1']
+        ]
     }
 }

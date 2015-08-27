@@ -13,15 +13,6 @@ spring:
         template:
             check-template-location: false
 
-
-endpoints:
-  health:
-    id: foo
-
-management:
-  address: 127.0.0.1
-
-
 ---
 grails:
     mime:
