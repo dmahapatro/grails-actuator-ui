@@ -1,0 +1,1 @@
+image:https://travis-ci.org/dmahapatro/grails-actuator-ui.svg?branch=master["Build Status", link="https://travis-ci.org/dmahapatro/grails-actuator-ui"]

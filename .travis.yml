@@ -3,4 +3,4 @@ jdk:
   - oraclejdk7
   - oraclejdk8
 
-script: ./gradlew :actuator-ui-app:check
+script: gradle wrapper && ./gradlew :actuator-ui-app:check
