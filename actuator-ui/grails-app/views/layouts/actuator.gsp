@@ -51,7 +51,7 @@
                             <asset:image src="actuator-ui/avatar5.png" class="user-image" alt="User Image"/>
                             <span class="hidden-xs">
                                 <plugin:isAvailable name="spring-security-core">
-                                    <sec:ifLoggedIn><sec:loggedInUserInfo field="username"/></sec:ifLoggedIn>
+                                    <sec:ifLoggedIn><sec:username/></sec:ifLoggedIn>
                                     <sec:ifNotLoggedIn>Anonymous</sec:ifNotLoggedIn>
                                 </plugin:isAvailable>
                                 <plugin:isNotAvailable name="spring-security-core">
@@ -66,7 +66,7 @@
 
                                 <p>
                                     <plugin:isAvailable name="spring-security-core">
-                                        <sec:ifLoggedIn><sec:loggedInUserInfo field="username"/></sec:ifLoggedIn>
+                                        <sec:ifLoggedIn><sec:username/></sec:ifLoggedIn>
                                         <sec:ifNotLoggedIn>Anonymous</sec:ifNotLoggedIn>
                                     </plugin:isAvailable>
                                     <plugin:isNotAvailable name="spring-security-core">
@@ -104,7 +104,7 @@
                 <div class="pull-left info">
                     <p>
                         <plugin:isAvailable name="spring-security-core">
-                            <sec:ifLoggedIn><sec:loggedInUserInfo field="username"/></sec:ifLoggedIn>
+                            <sec:ifLoggedIn><sec:username/></sec:ifLoggedIn>
                             <sec:ifNotLoggedIn>Anonymous</sec:ifNotLoggedIn>
                         </plugin:isAvailable>
                         <plugin:isNotAvailable name="spring-security-core">

@@ -1,14 +1,18 @@
 package com.grails.plugin
 
-import geb.spock.GebSpec
+import geb.spock.GebReportingSpec
 import grails.test.mixin.integration.Integration
 import grails.transaction.Rollback
 import org.grails.plugins.actuator.ui.ActuatorEndpointsConfig
 import org.springframework.beans.factory.annotation.Autowired
+import pages.DashboardPage
+import pages.LoginPage
+import spock.lang.Stepwise
 
 @Integration
 @Rollback
-class ActuatorUiSpec extends GebSpec {
+@Stepwise
+class ActuatorUiSpec extends GebReportingSpec {
     @Autowired
     ActuatorEndpointsConfig actuatorUiConfig
 
@@ -18,10 +22,19 @@ class ActuatorUiSpec extends GebSpec {
     }
 
     void "test dashboard"() {
-        when: "The home page is visited"
-        go '/actuator/dashboard'
+        when:
+        go "actuator/dashboard"
 
-        then: "The title is correct"
+        then:
+        at LoginPage
+
+        when:
+        loginModule.login()
+
+        then:
+        at DashboardPage
+
+        and: "The title is correct"
         $('title').text() == "actuator-ui-app | Admin"
 
         and: "section header has app name"
@@ -33,16 +46,16 @@ class ActuatorUiSpec extends GebSpec {
         and: "second row shows system information"
         $('section.content').find("div.row", 1).find(".info-box-text")*.text()[1, 3] == ['Java', 'PID']
 
-        and: "third row shows Memory and heap statistics"
-        $('section.content').find("div.row", 2).find(".box-title").text() == "Memory (KB)"
+        and: "third row shows HTTP Call statistics"
+        $('section.content').find("div.row", 2).find(".box-title").text() == "HTTP Call Statistics"
     }
 
     void "test dashboard shows the http call statistics after an http call is made"() {
         when: "go to traceability page"
-        go "/actuator/traceability"
+        go "actuator/traceability"
 
         and: "follow with going to dashboard page"
-        go "/actuator/dashboard"
+        to DashboardPage
 
         then: "http call statistic section is shown as the third row above memory chart"
         $('section.content').find("div.row", 2).find(".box-title").text() == "HTTP Call Statistics"
@@ -51,7 +64,7 @@ class ActuatorUiSpec extends GebSpec {
 
     void "test traceability shows the http call trace"() {
         when: "click on traceability menu"
-        go "/actuator/traceability"
+        go "actuator/traceability"
 
         then: "http call trace is shown in a data table"
         $('section', class: 'content').find(".box-title").text() == "HTTP Call Trace"
@@ -60,7 +73,7 @@ class ActuatorUiSpec extends GebSpec {
 
     void "test beans shows the available beans in application context"() {
         when: "click on traceability menu item"
-        go "/actuator/beans"
+        go "actuator/beans"
 
         then: "http call trace is shown in a data table"
         $('section', class: 'content').find(".box-title").text().startsWith "Beans loaded to Context:"
@@ -69,7 +82,7 @@ class ActuatorUiSpec extends GebSpec {
 
     void "test mapping shows all of the url mappings in the application"() {
         when: "click on mappings menu item"
-        go "/actuator/mappings"
+        go "actuator/mappings"
 
         then: "http call trace is shown in a data table"
         $('section', class: 'content').find(".box-title").text() == "Request Mappings"
@@ -80,7 +93,7 @@ class ActuatorUiSpec extends GebSpec {
         actuatorUiConfig.endpointsProperties = [enabled: false]
 
         when:
-        go "/actuator/dashboard"
+        to DashboardPage
 
         then: 'user forwarded to error page'
         $('section', class: 'content').find("h2.headline").text() == "406"
@@ -94,7 +107,7 @@ class ActuatorUiSpec extends GebSpec {
         actuatorUiConfig.endpointsProperties = [health: [enabled: false]]
 
         when:
-        go "/actuator/dashboard"
+        to DashboardPage
 
         then: 'user forwarded to error page'
         $('section', class: 'content').find("h2.headline").text() == "406"
@@ -108,7 +121,7 @@ class ActuatorUiSpec extends GebSpec {
         actuatorUiConfig.managementProperties = [port: -1]
 
         when:
-        go "/actuator/dashboard"
+        to DashboardPage
 
         then: 'user forwarded to error page'
         $('section', class: 'content').find("h2.headline").text() == "505"
@@ -122,7 +135,7 @@ class ActuatorUiSpec extends GebSpec {
         actuatorUiConfig.managementProperties = configuration
 
         when:
-        go "/actuator/dashboard"
+        to DashboardPage
 
         then: 'user forwarded to error page'
         $('section', class: 'content').find("h2.headline").text() == "501"

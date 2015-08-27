@@ -13,6 +13,33 @@ spring:
         template:
             check-template-location: false
 
+server:
+    contextPath: /sample
+
+---
+grails:
+    plugin:
+        springsecurity:
+            userLookup:
+                userDomainClassName: auth.User
+                authorityJoinClassName: auth.UserRole
+            authority:
+                className: auth.Role
+            controllerAnnotations:
+                staticRules:
+                    '/':                ['permitAll']
+                    '/error':           ['permitAll']
+                    '/assets/**':       ['permitAll']
+                    '/**/js/**':        ['permitAll']
+                    '/**/css/**':       ['permitAll']
+                    '/**/images/**':    ['permitAll']
+                    '/**/favicon.ico':  ['permitAll']
+                    '/actuatordashboard/**': ['hasRole("ROLE_ADMIN")']
+                    '/actuator/**':     ['hasRole("ROLE_ADMIN")']
+                    '/**':              ['hasAnyRole("ROLE_ADMIN, ROLE_USER")']
+            failureHandler:
+                defaultFailureUrl: /unauthorized
+
 ---
 grails:
     mime:
