@@ -1,8 +1,9 @@
-package com.grails.plugin
+package org.grails.plugins.actuator.ui
 
 import org.joda.time.Period
 
 class ActuatorDashboardService {
+    static transactional = false
 
     def metricsUtility(def metrics) {
         if(!metrics) return [:]

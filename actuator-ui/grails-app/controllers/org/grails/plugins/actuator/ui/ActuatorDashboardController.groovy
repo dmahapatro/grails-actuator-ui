@@ -1,18 +1,19 @@
-package com.grails.plugin
+package org.grails.plugins.actuator.ui
 
 import grails.converters.JSON
+import static org.grails.plugins.actuator.ui.ActuatorEndpoints.*
 
 class ActuatorDashboardController {
     static namespace = "actuator"
 
     ActuatorDashboardService actuatorDashboardService
-    def actuatorUiConfig
+    ActuatorEndpointsConfig actuatorUiConfig
 
     def index() {
-        def health  = parsedEndpointResponse 'health'
-        def info    = parsedEndpointResponse 'info'
-        def metrics = parsedEndpointResponse 'metrics'
-        def env     = parsedEndpointResponse 'env'
+        def health  = parsedEndpointResponse(actuatorUiConfig.getUrl(HEALTH))
+        def info    = parsedEndpointResponse(actuatorUiConfig.getUrl(INFO))
+        def metrics = parsedEndpointResponse(actuatorUiConfig.getUrl(METRICS))
+        def env     = parsedEndpointResponse(actuatorUiConfig.getUrl(ENV))
 
         metrics = actuatorDashboardService.metricsUtility(metrics)
 
@@ -20,21 +21,21 @@ class ActuatorDashboardController {
     }
 
     def traceability() {
-        def trace   = parsedEndpointResponse 'trace'
+        def trace   = parsedEndpointResponse(actuatorUiConfig.getUrl(TRACE))
         def traceMap = actuatorDashboardService.traceUtility(trace)
 
         render view: "trace", model: [traceMap: traceMap]
     }
 
     def springBeans() {
-        def allBeans = parsedEndpointResponse 'beans'
+        def allBeans = parsedEndpointResponse(actuatorUiConfig.getUrl(BEANS))
         def beansMap = actuatorDashboardService.beansUtility(allBeans)
 
         render view: "beans", model: [beansMap: beansMap]
     }
 
     def allMappings() {
-        def allMappings = parsedEndpointResponse 'mappings'
+        def allMappings = parsedEndpointResponse(actuatorUiConfig.getUrl(MAPPINGS))
         Map mappingsMap = actuatorDashboardService.mappingsUtility(allMappings)
 
         render view: "mappings", model: [mappingsMap: mappingsMap]

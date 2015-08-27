@@ -1,4 +1,4 @@
-package com.grails.plugin
+package org.grails.plugins.actuator.ui
 
 import grails.test.mixin.TestFor
 import spock.lang.Specification

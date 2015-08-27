@@ -7,19 +7,6 @@
 //= require pages/dashboard.js
 //= require_tree .
 
-/*! AdminLTE app.js
- * ================
- * Main JS application file for AdminLTE v2. This file
- * should be included in all pages. It controls some layout
- * options and implements exclusive AdminLTE plugins.
- *
- * @Author  Almsaeed Studio
- * @Support <http://www.almsaeedstudio.com>
- * @Email   <support@almsaeedstudio.com>
- * @version 2.3.0
- * @license MIT <http://opensource.org/licenses/MIT>
- */
-
 //Make sure jQuery has been loaded before app.js
 if (typeof jQuery === "undefined") {
   throw new Error("AdminLTE requires jQuery");

@@ -1,4 +1,4 @@
-package com.grails.plugin
+package org.grails.plugins.actuator.ui
 
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
@@ -9,6 +9,7 @@ import spock.lang.Specification
 class ActuatorDashboardControllerSpec extends Specification {
 
     def setup() {
+        controller.actuatorUiConfig = Mock(ActuatorEndpointsConfig)
         controller.actuatorDashboardService = Mock(ActuatorDashboardService) {
             metricsUtility(_) >> { def param -> param }
             traceUtility(_) >> { def param -> param }

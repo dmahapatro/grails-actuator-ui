@@ -1,6 +1,6 @@
 package actuator.ui
 
-import com.grails.plugin.actuator.ui.ActuatorEndpointsConfig
+import org.grails.plugins.actuator.ui.ActuatorEndpointsConfig
 import grails.plugins.*
 
 class ActuatorUiGrailsPlugin extends Plugin {
@@ -10,7 +10,7 @@ class ActuatorUiGrailsPlugin extends Plugin {
         "grails-app/views/error.gsp"
     ]
 
-    def title = "Actuator UI" // Headline display name of the plugin
+    def title = "Actuator UI"
     def author = "Dhiraj Mahapatro"
     def authorEmail = "dhiraj.mahapatro@gmail.com"
     def description = '''\
@@ -25,8 +25,8 @@ The response from HTTP endpoints available in a Grails 3 (Spring Boot) app is pr
 
     Closure doWithSpring() { {->
             actuatorUiConfig(ActuatorEndpointsConfig) {
-                endpointsProperties = application.config.getProperty('endpoints', Map, [:])
-                managementProperties = application.config.getProperty('management', Map, [:])
+                endpointsProperties = config.getProperty('endpoints', Map, [:])
+                managementProperties = config.getProperty('management', Map, [:])
             }
         } 
     }

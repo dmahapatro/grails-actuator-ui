@@ -4,5 +4,6 @@ class ActuatorUiUrlMappings {
         "/actuator/traceability"(controller: "actuatorDashboard", action: "traceability", namespace: 'actuator')
         "/actuator/beans"(controller: "actuatorDashboard", action: "springBeans", namespace: 'actuator')
         "/actuator/mappings"(controller: "actuatorDashboard", action: "allMappings", namespace: 'actuator')
+        "/actuator/notAllowed"(view: "/actuatorDashboard/notAllowed")
     }
 }
