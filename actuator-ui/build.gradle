@@ -9,12 +9,14 @@ buildscript {
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath 'com.bertramlabs.plugins:asset-pipeline-gradle:2.5.0'
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.4.0'
     }
 }
 
 plugins {
     id "io.spring.dependency-management" version "0.5.2.RELEASE"
     id "com.jfrog.bintray" version "1.2"
+    id "net.saliman.cobertura" version '2.2.7'
 }
 
 version "0.1-SNAPSHOT"
@@ -27,8 +29,8 @@ apply plugin: "spring-boot"
 apply plugin: "org.grails.grails-plugin"
 apply plugin: "org.grails.grails-gsp"
 // Used for publishing to central repository, remove if not needed
-apply from:'http://raw.githubusercontent.com/grails/grails-profile-repository/master/profiles/plugin/templates/grailsCentralPublishing.gradle'
-apply from:'http://raw.githubusercontent.com/grails/grails-profile-repository/master/profiles/plugin/templates/bintrayPublishing.gradle'
+apply from:'https://raw.githubusercontent.com/grails/grails-profile-repository/master/profiles/plugin/templates/grailsCentralPublishing.gradle'
+apply from:'https://raw.githubusercontent.com/grails/grails-profile-repository/master/profiles/plugin/templates/bintrayPublishing.gradle'
 
 ext {
     grailsVersion = project.grailsVersion
@@ -37,7 +39,6 @@ ext {
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
-
 
 repositories {
     mavenLocal()
@@ -71,3 +72,6 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = gradleWrapperVersion
 }
+
+apply from: 'gradle/coverage.gradle'
+apply from: 'gradle/publishing.gradle'

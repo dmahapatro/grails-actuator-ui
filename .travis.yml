@@ -4,3 +4,6 @@ jdk:
   - oraclejdk8
 
 script: gradle wrapper && ./gradlew :actuator-ui-app:check
+
+after_success:
+- cd actuator_ui && ./gradlew cobertura coveralls
