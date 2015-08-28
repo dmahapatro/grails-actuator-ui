@@ -1,5 +1,6 @@
 bintray {
     pkg {
+        userOrg = ''
         name = "$project.group:$project.name"
         issueTrackerUrl = "https://github.com/dmahapatro/grails-$project.name/issues"
         vcsUrl = "https://github.com/dmahapatro/grails-$project.name"
