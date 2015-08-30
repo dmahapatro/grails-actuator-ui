@@ -51,5 +51,14 @@ grails:
                 staticRules:
                     ...
                     '/actuatordashboard/**': ['hasRole("ROLE_ADMIN")']
-                    '/actuator/**':     ['hasRole("ROLE_ADMIN")']
+                    '/actuator/**':          ['hasRole("ROLE_ADMIN")']
 ```
+
+== Sample
+video::screencast.mov[options=autoplay]
+
+== TODO
+ - Add `configprops` and `env`
+ - Make items searcheable
+ - Add charts on Garbage Collection metrics.
+ - Add support for custom address and port.
