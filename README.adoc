@@ -3,6 +3,9 @@ image:https://travis-ci.org/dmahapatro/grails-actuator-ui.svg?branch=master["Bui
 http://docs.spring.io/autorepo/docs/spring-boot/current/reference/htmlsingle/#production-ready[Spring Actuator] is a tool which monitors application's `health`, `metrics` and lots of other metadata information about the application.
 This plugin projects those information in a UI which makes it very user friendly to know the status of the application.
 
+== Demo
+https://www.youtube.com/watch?v=huhC1LV5I8Q[DEMO]
+
 == Prerequisites
  - > Grails 3.*
 
@@ -54,8 +57,8 @@ grails:
                     '/actuator/**':          ['hasRole("ROLE_ADMIN")']
 ```
 
-== Sample
-video::screencast.mov[options=autoplay]
+=== Sample
+video::huhC1LV5I8Q[youtube]
 
 == TODO
  - Add `configprops` and `env`
