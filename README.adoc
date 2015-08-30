@@ -1,1 +1,56 @@
 image:https://travis-ci.org/dmahapatro/grails-actuator-ui.svg?branch=master["Build Status", link="https://travis-ci.org/dmahapatro/grails-actuator-ui"]
+
+http://docs.spring.io/autorepo/docs/spring-boot/current/reference/htmlsingle/#production-ready[Spring Actuator] is a tool which monitors application's `health`, `metrics` and lots of other metadata information about the application.
+This plugin projects those information in a UI which makes it very user friendly to know the status of the application.
+
+== Prerequisites
+ - > Grails 3.*
+
+== Configuration
+=== Gradle Projects
+`build.gradle`
+
+```groovy
+repositories {
+    maven {
+        url  "http://dl.bintray.com/dmahapatro/plugins"
+    }
+}
+
+dependencies {
+    ...
+    compile "org.grails.plugins:actuator-ui:0.1"
+}
+```
+
+== How To
+To access the actuator endpoints you can simply hit `/actuator/dashboard` at root context.
+
+```groovy
+http://localhost:8080/sample/actuator/dashboard
+```
+
+where `/sample` is the root context of the application. For a base Grails app where root context is `/`, the url will be
+
+```groovy
+http://localhost:8080/actuator/dashboard
+```
+
+== Secured
+Actuator UI is targeted for Admins and normal users. Taking ROLE into consideration this plugin can be easily integrated with spring security core plugin. For example with a mapping like the below in `application.yml` would secure `/actuator/dashboard` endpoint.
+
+```yaml
+grails:
+    plugin:
+        springsecurity:
+            userLookup:
+                userDomainClassName: auth.User
+                authorityJoinClassName: auth.UserRole
+            authority:
+                className: auth.Role
+            controllerAnnotations:
+                staticRules:
+                    ...
+                    '/actuatordashboard/**': ['hasRole("ROLE_ADMIN")']
+                    '/actuator/**':     ['hasRole("ROLE_ADMIN")']
+```
