@@ -7,7 +7,6 @@ This plugin projects those information in a UI which makes it very user friendly
  - > Grails 3.*
 
 == Configuration
-=== Gradle Projects
 `build.gradle`
 
 ```groovy
