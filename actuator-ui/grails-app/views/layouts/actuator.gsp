@@ -46,6 +46,17 @@
                             </p>
                         </plugin:isNotAvailable>
                     </li>
+                    <plugin:isAvailable name="console">
+                        <li class="messages-menu">
+                            <g:link controller="console"
+                                    action="index"
+                                    plugin="console"
+                                    title="Open Console"
+                                    target="_blank" aria-expanded="false">
+                                <i class="fa fa-edit"></i>
+                            </g:link>
+                        </li>
+                    </plugin:isAvailable>
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <asset:image src="actuator-ui/avatar5.png" class="user-image" alt="User Image"/>
