@@ -1,3 +1,6 @@
+:imagesdir: actuator-ui-app/src/main/resources
+:data-uri:
+
 image:https://travis-ci.org/dmahapatro/grails-actuator-ui.svg?branch=master["Build Status", link="https://travis-ci.org/dmahapatro/grails-actuator-ui"]
 
 http://docs.spring.io/autorepo/docs/spring-boot/current/reference/htmlsingle/#production-ready[Spring Actuator] is a tool which monitors application's `health`, `metrics` and lots of other metadata information about the application.
@@ -59,6 +62,11 @@ grails:
 
 === Sample
 video::huhC1LV5I8Q[youtube]
+
+=== v0.2 (WIP)
+ - Integrate console plugin. A link will be provided in the header bar to open console via console plugin. Appropriate version of console plugin has to be installed in the app which uses this plugin. If console plugin is added as a dependency then the actuator dashboard should show a console link as below:
+
+   image::OpenConsole.png[]
 
 == TODO
  - Add `configprops` and `env`
