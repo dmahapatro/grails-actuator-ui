@@ -16,6 +16,14 @@
                 <div class="box box-success">
                     <div class="box-header">
                         <h3 class="box-title">Beans loaded to Context: ${appContext.context}</h3>
+                        <div class="box-tools">
+                            <div class="input-group" style="width: 150px;">
+                                <input type="text"
+                                       name="table_search"
+                                       id="beanSearch"
+                                       class="form-control input-sm pull-right" placeholder="Search">
+                            </div>
+                        </div>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <table id="beansTable" class="table table-bordered table-hover">
@@ -73,17 +81,5 @@
         </div>
     </g:each><!-- /.row (main row) -->
 </section><!-- /.content -->
-<g:javascript>
-    $(function () {
-        $("#beansTable").DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false
-        });
-    });
-</g:javascript>
 </body>
 </html>
