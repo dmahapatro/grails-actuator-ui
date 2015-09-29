@@ -59,6 +59,7 @@ class ActuatorUiSpec extends GebReportingSpec {
 
         then: "http call statistic section is shown as the third row above memory chart"
         $('section.content').find("div.row", 2).find(".box-title").text() == "HTTP Call Statistics"
+        $('section.content').find("div.row", 2).find(".box-tools input").attr('placeholder') == "Search"
         $("table", id: "counterGauge").children("tbody").children().size() > 0
     }
 
@@ -68,6 +69,7 @@ class ActuatorUiSpec extends GebReportingSpec {
 
         then: "http call trace is shown in a data table"
         $('section', class: 'content').find(".box-title").text() == "HTTP Call Trace"
+        $('section', class: 'content').find(".box-tools input").attr('placeholder') == "Search"
         $('table', id: 'traceTable').find("tbody").children().size() > 0
     }
 
@@ -77,6 +79,7 @@ class ActuatorUiSpec extends GebReportingSpec {
 
         then: "http call trace is shown in a data table"
         $('section', class: 'content').find(".box-title").text().startsWith "Beans loaded to Context:"
+        $('section', class: 'content').find(".box-tools input").attr('placeholder')== "Search"
         $('table', id: 'beansTable').find("code")*.text().intersect(['actuatorDashboardService', 'application'])
     }
 
@@ -86,6 +89,7 @@ class ActuatorUiSpec extends GebReportingSpec {
 
         then: "http call trace is shown in a data table"
         $('section', class: 'content').find(".box-title").text() == "Request Mappings"
+        $('section', class: 'content').find(".box-tools input").attr('placeholder') == "Search"
     }
 
     void "test user is forwarded to error page with status 406 if endpoints are not enabled"() {
