@@ -21,7 +21,7 @@ repositories {
 
 dependencies {
     ...
-    compile "org.grails.plugins:actuator-ui:0.1"
+    compile "org.grails.plugins:actuator-ui:0.2"
 }
 ```
 
