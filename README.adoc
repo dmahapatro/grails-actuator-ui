@@ -57,8 +57,10 @@ grails:
                     '/actuator/**':          ['hasRole("ROLE_ADMIN")']
 ```
 
-=== Sample
-video::huhC1LV5I8Q[youtube]
+=== Sample 
+Sample apps with Spring Security Core integration:  
+
+ - Run https://github.com/dmahapatro/grails-actuator-ui/tree/master/actuator-ui-app[actuator-ui-app] available as sub project in this plugin repository.
 
 === v0.2
  - Integrated console plugin. A link is provided in the header bar to open console via console plugin. Appropriate version of console plugin has to be installed in the app which uses this plugin. If console plugin is added as a dependency then actuator dashboard should show console link next to the logged in user in top right corner.
