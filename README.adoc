@@ -1,5 +1,7 @@
 image:https://travis-ci.org/dmahapatro/grails-actuator-ui.svg?branch=master["Build Status", link="https://travis-ci.org/dmahapatro/grails-actuator-ui"]
 
+image::https://api.bintray.com/packages/dmahapatro/plugins/actuator-ui/images/download.svg[link="https://bintray.com/dmahapatro/plugins/actuator-ui/_latestVersion"]
+
 http://docs.spring.io/autorepo/docs/spring-boot/current/reference/htmlsingle/#production-ready[Spring Actuator] is a tool which monitors application's `health`, `metrics` and lots of other metadata information about the application.
 This plugin projects those information in a UI which makes it very user friendly to know the status of the application.
 
