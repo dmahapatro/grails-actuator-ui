@@ -1,6 +1,6 @@
 package com.grails.plugin
 
-import geb.spock.GebReportingSpec
+import geb.spock.GebSpec
 import grails.test.mixin.integration.Integration
 import grails.transaction.Rollback
 import org.grails.plugins.actuator.ui.ActuatorEndpointsConfig
@@ -12,7 +12,7 @@ import spock.lang.Stepwise
 @Integration
 @Rollback
 @Stepwise
-class ActuatorUiSpec extends GebReportingSpec {
+class ActuatorUiSpec extends GebSpec {
     @Autowired
     ActuatorEndpointsConfig actuatorUiConfig
 
@@ -23,7 +23,7 @@ class ActuatorUiSpec extends GebReportingSpec {
 
     void "test dashboard"() {
         when:
-        go "actuator/dashboard"
+        go "/sample/actuator/dashboard"
 
         then:
         at LoginPage
@@ -33,9 +33,6 @@ class ActuatorUiSpec extends GebReportingSpec {
 
         then:
         at DashboardPage
-
-        and: "The title is correct"
-        $('title').text() == "actuator-ui-app | Admin"
 
         and: "section header has app name"
         $('section.content-header').$('h1').text().startsWith "actuator-ui-app"
@@ -52,7 +49,7 @@ class ActuatorUiSpec extends GebReportingSpec {
 
     void "test dashboard shows the http call statistics after an http call is made"() {
         when: "go to traceability page"
-        go "actuator/traceability"
+        go "/sample/actuator/traceability"
 
         and: "follow with going to dashboard page"
         to DashboardPage
@@ -65,7 +62,7 @@ class ActuatorUiSpec extends GebReportingSpec {
 
     void "test traceability shows the http call trace"() {
         when: "click on traceability menu"
-        go "actuator/traceability"
+        go "/sample/actuator/traceability"
 
         then: "http call trace is shown in a data table"
         $('section', class: 'content').find(".box-title").text() == "HTTP Call Trace"
@@ -75,7 +72,7 @@ class ActuatorUiSpec extends GebReportingSpec {
 
     void "test beans shows the available beans in application context"() {
         when: "click on traceability menu item"
-        go "actuator/beans"
+        go "/sample/actuator/beans"
 
         then: "http call trace is shown in a data table"
         $('section', class: 'content').find(".box-title").text().startsWith "Beans loaded to Context:"
@@ -85,7 +82,7 @@ class ActuatorUiSpec extends GebReportingSpec {
 
     void "test mapping shows all of the url mappings in the application"() {
         when: "click on mappings menu item"
-        go "actuator/mappings"
+        go "/sample/actuator/mappings"
 
         then: "http call trace is shown in a data table"
         $('section', class: 'content').find(".box-title").text() == "Request Mappings"

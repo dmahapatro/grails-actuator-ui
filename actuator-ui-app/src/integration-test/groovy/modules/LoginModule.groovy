@@ -9,8 +9,8 @@ class LoginModule extends Module {
     }
 
     void login(String username = "admin@sample.org", String password = "admin") {
-        loginForm.j_username = username
-        loginForm.j_password = password
+        loginForm.username = username
+        loginForm.password = password
         loginButton.click()
     }
 }

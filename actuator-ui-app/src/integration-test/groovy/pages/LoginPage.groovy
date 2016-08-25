@@ -4,7 +4,7 @@ import geb.Page
 import modules.LoginModule
 
 class LoginPage extends Page {
-    static url = "login/auth"
+    static url = "/sample/login/auth"
 
     static at = { title == "Login" }
 

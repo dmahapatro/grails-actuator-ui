@@ -7,7 +7,8 @@ This plugin projects those information in a UI which makes it very user friendly
 https://www.youtube.com/watch?v=huhC1LV5I8Q[DEMO]
 
 == Prerequisites
- - > Grails 3.*
+ - For Grails 3.0.* version 0.2 can be used
+ - For Grails 3.1.* version 1.0 should be used
 
 == Configuration
 `build.gradle`
@@ -21,7 +22,7 @@ repositories {
 
 dependencies {
     ...
-    compile "org.grails.plugins:actuator-ui:0.2"
+    compile "org.grails.plugins:actuator-ui:1.0"
 }
 ```
 
@@ -52,9 +53,10 @@ grails:
                 className: auth.Role
             controllerAnnotations:
                 staticRules:
-                    ...
-                    '/actuatordashboard/**': ['hasRole("ROLE_ADMIN")']
-                    '/actuator/**':          ['hasRole("ROLE_ADMIN")']
+                    - pattern: '/actuatordashboard/**'
+                      access: ['hasRole("ROLE_ADMIN")']
+                    - pattern: '/actuator/**'
+                      access: ['hasRole("ROLE_ADMIN")']
 ```
 
 === Sample 

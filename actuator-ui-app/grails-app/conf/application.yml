@@ -27,16 +27,26 @@ grails:
                 className: auth.Role
             controllerAnnotations:
                 staticRules:
-                    '/':                ['permitAll']
-                    '/error':           ['permitAll']
-                    '/assets/**':       ['permitAll']
-                    '/**/js/**':        ['permitAll']
-                    '/**/css/**':       ['permitAll']
-                    '/**/images/**':    ['permitAll']
-                    '/**/favicon.ico':  ['permitAll']
-                    '/actuatordashboard/**': ['hasRole("ROLE_ADMIN")']
-                    '/actuator/**':     ['hasRole("ROLE_ADMIN")']
-                    '/**':              ['hasAnyRole("ROLE_ADMIN, ROLE_USER")']
+                    - pattern: '/'
+                      access: ['permitAll']
+                    - pattern: '/error'
+                      access: ['permitAll']
+                    - pattern: '/assets/**'
+                      access: ['permitAll']
+                    - pattern: '/**/js/**'
+                      access: ['permitAll']
+                    - pattern: '/**/css/**'
+                      access: ['permitAll']
+                    - pattern: '/**/images/**'
+                      access: ['permitAll']
+                    - pattern: '/**/favicon.ico'
+                      access: ['permitAll']
+                    - pattern: '/actuatordashboard/**'
+                      access: ['hasRole("ROLE_ADMIN")']
+                    - pattern: '/actuator/**'
+                      access: ['hasRole("ROLE_ADMIN")']
+                    - pattern: '/**'
+                      access: ['hasAnyRole("ROLE_ADMIN, ROLE_USER")']
             failureHandler:
                 defaultFailureUrl: /unauthorized
 

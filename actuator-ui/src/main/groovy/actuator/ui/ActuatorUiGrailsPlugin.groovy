@@ -4,8 +4,8 @@ import org.grails.plugins.actuator.ui.ActuatorEndpointsConfig
 import grails.plugins.*
 
 class ActuatorUiGrailsPlugin extends Plugin {
-    def version = "0.1-SNAPSHOT"
-    def grailsVersion = "3.0.0 > *"
+    def version = "1.0"
+    def grailsVersion = "3.1.0 > *"
     def pluginExcludes = [
         "grails-app/views/error.gsp"
     ]
