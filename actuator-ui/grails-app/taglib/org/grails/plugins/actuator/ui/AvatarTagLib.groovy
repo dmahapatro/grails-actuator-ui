@@ -27,8 +27,10 @@ class AvatarTagLib {
 
         def springSecurityService = grailsApplication.mainContext.getBean('springSecurityService')
 
-        if (grailsApplication.config.actuator.gravatar.enabled
-                && springSecurityService.isLoggedIn()) {
+        if (
+            !grailsApplication.config.grails.plugin.actuator.gravatar.disabled &&
+            springSecurityService.isLoggedIn()
+        ) {
             out << gravatar.image(email: springSecurityService.principal.username, cssClass: cssClass, alt: alt)
         } else {
             out << asset.image(src: src, class: cssClass, alt: alt)

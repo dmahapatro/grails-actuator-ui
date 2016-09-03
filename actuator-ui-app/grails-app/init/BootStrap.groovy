@@ -10,14 +10,16 @@ class BootStrap {
         def userRole = new Role(authority: 'ROLE_USER').save flush: true, failOnError: true
 
         def adminUser = new User(username: 'admin@sample.org', fullName: "John Doe", password: 'admin')
+        def dmahapatro = new User(username: 'dhiraj.mahapatro@gmail.com', fullName: "Dhiraj Mahapatro", password: 'admin')
         def normalUser = new User(username: 'simple@sample.org', fullName: "Jack Miller", password: 'simple')
-        [adminUser, normalUser]*.save flush: true, failOnError: true
+        [adminUser, normalUser, dmahapatro]*.save flush: true, failOnError: true
 
         UserRole.create(adminUser, adminRole, true)
+        UserRole.create(dmahapatro, adminRole, true)
         UserRole.create(normalUser, userRole, true)
 
-        assert User.count() == 2
+        assert User.count() == 3
         assert Role.count() == 2
-        assert UserRole.count() == 2
+        assert UserRole.count() == 3
     }
 }

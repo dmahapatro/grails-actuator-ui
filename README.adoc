@@ -64,26 +64,33 @@ grails:
 Actuator-ui ships with Gravatar plugin. It will render a gravatar image under the following circumstances:
 
  - Spring Security is installed
- - The user is logged in 
- - Gravatar is enabled for actuator-ui
+ - The user is logged in
 
-To enable Gravatar in actuator-ui, you should add the followin to your `application.yml`.
+Gravatar is enabled for actuator-ui by default. To disable Gravatar in actuator-ui, you should add the following to application's `application.yml`.
 
 ```yaml
- actuator:
-     gravatar:
-         enabled: true
+grails:
+    plugin:
+        actuator:
+            gravatar:
+                disabled: true
 ```
 
 To modify the default rating and gravatar fallback image please refer to the https://github.com/rpalcolea/grails-gravatar[Gravatar Plugin Documentation]
 
-*IMPORTANT NOTE: when `spring security` and `gravatar` are enabled, the plugin grabs the username to look for the gravatar. In this case the username should be a valid email otherwise it will fallback to the default gravatar image.*
+NOTE: *When `spring security` and `gravatar` are enabled, the plugin grabs the username to look for the gravatar. In this case the username should be a valid email registered in Gravatar otherwise it will fallback to the default gravatar image.*
 
 === Sample 
 Sample apps with Spring Security Core integration:  
 
  - Run https://github.com/dmahapatro/grails-actuator-ui/tree/master/actuator-ui-app[actuator-ui-app] available as sub project in this plugin repository.
  - Run https://bitbucket.org/bgoetzmann/odelia-gina-actuator/overview[sample app] created by Bertrand Goetzmann.
+
+=== v1.1
+ - Gravatar support added for logged in user.
+
+=== v1.0
+ - Grails upgraded to v3.1.10
 
 === v0.2
  - Integrated console plugin. A link is provided in the header bar to open console via console plugin. Appropriate version of console plugin has to be installed in the app which uses this plugin. If console plugin is added as a dependency then actuator dashboard should show console link next to the logged in user in top right corner.

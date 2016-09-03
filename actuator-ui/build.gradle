@@ -17,7 +17,7 @@ plugins {
     id "net.saliman.cobertura" version "2.3.2"
 }
 
-version "1.0"
+version "1.1"
 group "org.grails.plugins"
 
 apply plugin:"eclipse"
