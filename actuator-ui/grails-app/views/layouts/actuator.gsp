@@ -59,7 +59,8 @@
                     </plugin:isAvailable>
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <asset:image src="actuator-ui/avatar5.png" class="user-image" alt="User Image"/>
+                            <actuator:avatar default="actuator-ui/avatar5.png" cssClass="user-image" alt="User Image"/>
+
                             <span class="hidden-xs">
                                 <plugin:isAvailable name="spring-security-core">
                                     <sec:ifLoggedIn><sec:username/></sec:ifLoggedIn>
@@ -73,8 +74,7 @@
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <asset:image src="actuator-ui/avatar5.png" class="img-circle" alt="User Image"/>
-
+                            <actuator:avatar default="actuator-ui/avatar5.png" cssClass="img-circle" alt="User Image"/>
                                 <p>
                                     <plugin:isAvailable name="spring-security-core">
                                         <sec:ifLoggedIn><sec:username/></sec:ifLoggedIn>
@@ -109,7 +109,7 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <asset:image src="actuator-ui/avatar5.png" class="img-circle" alt="User Image"/>
+                    <actuator:avatar default="actuator-ui/avatar5.png" cssClass="img-circle" alt="User Image"/>
                 </div>
 
                 <div class="pull-left info">

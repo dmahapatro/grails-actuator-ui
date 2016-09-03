@@ -60,6 +60,24 @@ grails:
                     - pattern: '/actuator/**'
                       access: ['hasRole("ROLE_ADMIN")']
 ```
+=== Avatar support
+Actuator-ui ships with Gravatar plugin. It will render a gravatar image under the following circumstances:
+
+ - Spring Security is installed
+ - The user is logged in 
+ - Gravatar is enabled for actuator-ui
+
+To enable Gravatar in actuator-ui, you should add the followin to your `application.yml`.
+
+```yaml
+ actuator:
+     gravatar:
+         enabled: true
+```
+
+To modify the default rating and gravatar fallback image please refer to the https://github.com/rpalcolea/grails-gravatar[Gravatar Plugin Documentation]
+
+*IMPORTANT NOTE: when `spring security` and `gravatar` are enabled, the plugin grabs the username to look for the gravatar. In this case the username should be a valid email otherwise it will fallback to the default gravatar image.*
 
 === Sample 
 Sample apps with Spring Security Core integration:  
